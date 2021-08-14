@@ -1,0 +1,24 @@
+[ {"Jsons para": "agregar"},
+
+    
+    {
+    "usuario": "Jair007",
+    "nombre": "Jair Mora",
+    "password": "12345",
+    "email": "jair@hoh.com",
+    "direccion": "Cll 12 #21-12",
+    "telefono": 8798909
+    },
+    {
+        "id": 7,
+        "productName": "Sandwich Foaccia",
+        "price": 440
+    },
+    {
+        "estado":"Confirmado"
+    },
+    {
+        "medioDePago": "BitCoin"
+    }
+]
+
