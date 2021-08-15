@@ -5,10 +5,22 @@ const app = express();
 
 
 require('dotenv').config('../.env');
-
 PORT = process.env.PORT || 5000;
 
 app.use(express.json());
+
+
+
+
+
+const UserRouter = require('./routes/users.routes');
+
+app.use('/users', UserRouter);
+
+
+
+
+
 
 
 
