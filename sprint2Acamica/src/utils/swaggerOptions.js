@@ -4,7 +4,7 @@ const swaggerOptions = {
         info: {
             title: "Sprint project 1 - Delilah Resto",
             version: "1.0.0",
-            description: "Proyecto 1 para acamica DWBE"
+            description: "Proyecto 2 para acamica DWBE"
         },
         servers: [
             {
