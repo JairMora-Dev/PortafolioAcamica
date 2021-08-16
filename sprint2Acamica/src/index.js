@@ -1,40 +1,48 @@
-//librerias a usar
+const sequelize = require('./database/db');
 const express = require('express');
-const swaggerJsDoc = require('swagger-jsdoc');
-const swaggerUI = require('swagger-ui-express');
-const basicAuth = require('express-basic-auth');
-
-
-//Acceso a requerimiento de rutas
-const usersRoutes = require('./routes/usuarios.routes');
-const producRoutes = require('./routes/productos.routes');
-const ordersRoutes = require('./routes/pedidos.routes');
-const loginRoutes = require('./routes/registro.routes');
-const PayMRoutes = require('./routes/medioPago.routes');
-
-//swagger routes
-const swaggerOptions = require('./utils/swaggerOptions');
-const autentication = require('./middlewares/users.middleware');
-const PayRoutes = require('./routes/medioPago.routes');
-
-
-
-
-
+const db = require('./database/db')
 const app = express();
+
+
+require('dotenv').config('../.env');
+PORT = process.env.PORT || 5000;
+
 app.use(express.json());
 
-const swaggerSpecs = swaggerJsDoc(swaggerOptions);
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 
 
-app.use('/singup', loginRoutes);
-app.use('/payments', PayRoutes);
-
-app.use(basicAuth({authorizer : autentication}));
-app.use('/users', usersRoutes);
-app.use('/products', producRoutes);
-app.use('/orders', ordersRoutes);
 
 
-app.listen(5000, ()=> {console.log('Escuchando el puerto 5000')});
+const userRouter = require('./routes/users.routes');
+const adressRouter = require('./routes/adresses.routes')
+const productRouter = require('./routes/products.routes');
+const payMethodRouter = require('./routes/payMethods.routes');
+const orderRouter = require('./routes/orders.routes');
+
+
+app.use('/users', userRouter);
+app.use('/User/adress', adressRouter);
+app.use('/products', productRouter);
+app.use('/pays', payMethodRouter);
+app.use('/orders', orderRouter);
+
+
+
+
+
+
+
+db.sequelize.sync({ force: false })
+    .then(()=> {
+        console.log('This Project is connecting to MySQL DB');
+        app.listen(PORT);
+        console.log('Listen Port '+ PORT);
+    })
+    .catch(err => {
+        console.log('Error to concect to DB:' +err);
+    });
+ 
+
+
+
+
