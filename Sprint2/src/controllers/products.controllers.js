@@ -7,25 +7,18 @@ exports.getAll = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-    const { productName, price, quantity } = req.body;
-    const newProduct = await db.Products.create({
-        productName,
-        price,
-        quantity
-    });
+    const { productName, price } = req.body;
+    const newProduct = await db.Products.create({  productName, price  });
     res.json(newProduct);
 };
 
 exports.update = async (req, res) => {
     const { id } = req.params;
-    const { productName, price, quantity } = req.body;
-    const updateProduct = await db.Products.update({
+    const { productName, price } = req.body;
+    const updateProduct = await db.Products.update({ productName, price }, {
         where: {
-            id: id
-        },
-        productName,
-        price,
-        quantity
+            id
+        }
     });
     res.json(updateProduct);
 };

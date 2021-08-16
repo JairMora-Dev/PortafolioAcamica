@@ -5,9 +5,6 @@ module.exports = ( sequelize, DataTypes ) =>{
         },
         price:{
             type: DataTypes.FLOAT
-        },
-        quantity:{
-            type: DataTypes.INTEGER
         }
     });
     return Product

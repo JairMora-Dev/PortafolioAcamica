@@ -14,16 +14,17 @@ app.use(express.json());
 
 
 const userRouter = require('./routes/users.routes');
+const adressRouter = require('./routes/adresses.routes')
 const productRouter = require('./routes/products.routes');
+const payMethodRouter = require('./routes/payMethods.routes');
 const orderRouter = require('./routes/orders.routes');
 
+
 app.use('/users', userRouter);
+app.use('/User/adress', adressRouter);
 app.use('/products', productRouter);
+app.use('/pays', payMethodRouter);
 app.use('/orders', orderRouter);
-
-
-
-
 
 
 

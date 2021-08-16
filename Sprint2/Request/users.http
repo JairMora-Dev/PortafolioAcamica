@@ -8,9 +8,9 @@ Content-Type: application/json
 {
     "user": "Delilah",
     "name": "Delix Ana",
-    "password": "1234",
+    "password": "del0al10",
     "email": "delilah@gmail.com",
-    "phone": 789098,
+    "phone": 7890981,
     "isAdmin": true
 }
 

@@ -1,10 +1,13 @@
 module.exports = ( sequelize, DataTypes ) =>{
     const Order = sequelize.define('orders', {
-        payMethods:{
-            type: DataTypes.INTEGER
-        },
         totalCost:{
             type: DataTypes.FLOAT
+        },
+        quantityProducts:{
+            type: DataTypes.INTEGER
+        },
+        stateOrder:{
+            type: DataTypes.STRING
         }
     });
     return Order
