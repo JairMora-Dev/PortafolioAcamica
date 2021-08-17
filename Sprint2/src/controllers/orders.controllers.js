@@ -1,3 +1,4 @@
+const { Products } = require('../database/db');
 const db = require('../database/db');
 
 exports.getAll = async (req, res) => {
@@ -8,15 +9,20 @@ exports.getAll = async (req, res) => {
 };
 
 
+// exports.create = async (req, res) => {
+//     const { totalCost, quantityProducts, stateOrder } = req.body;
+//     const newOrder = await db.Orders.create({
+//         totalCost,
+//         quantityProducts,
+//         stateOrder
+//     });
+//     res.json(newOrder);
+// };
+
 exports.create = async (req, res) => {
-    const { totalCost, quantityProducts, stateOrder } = req.body;
-    const newOrder = await db.Orders.create({
-        totalCost,
-        quantityProducts,
-        stateOrder
-    });
-    res.json(newOrder);
+   
 };
+
 
 exports.update = async (req, res) => {
     const { id } = req.params;

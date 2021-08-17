@@ -32,6 +32,7 @@ db.Addresses.belongsTo(db.Users);
 db.Products.belongsToMany(db.Orders, { through: 'Products_Orders' });
 db.Orders.belongsToMany(db.Products, { through: 'Products_Orders' });
 
+
 db.PayMethods.hasOne(db.Orders);
 db.Orders.belongsTo(db.PayMethods);
 

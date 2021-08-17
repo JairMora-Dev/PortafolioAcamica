@@ -1,7 +1,8 @@
 module.exports = ( sequelize, DataTypes ) =>{
     const PayMethods = sequelize.define('payMethods', {
         payMeth:{
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         }
     });
     return PayMethods
