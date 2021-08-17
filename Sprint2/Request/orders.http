@@ -1,0 +1,16 @@
+###
+GET http://localhost:5000/orders
+
+###
+POST http://localhost:5000/orders/postOrder
+Content-Type: application/json
+
+{
+    "totalCost": 0,
+    "quantityProducts": 0,
+    "stateOrder": "pendiente",
+    "userId": null,
+    "PayMethod": null
+}
+
+

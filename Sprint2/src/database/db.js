@@ -29,8 +29,8 @@ db.Users.hasMany(db.Addresses);
 db.Addresses.belongsTo(db.Users);
 
 //BD_ORDERS
-db.Products.hasMany(db.Orders);
-db.Orders.belongsTo(db.Products);
+db.Products.belongsToMany(db.Orders, { through: 'Products_Orders' });
+db.Orders.belongsToMany(db.Products, { through: 'Products_Orders' });
 
 db.PayMethods.hasOne(db.Orders);
 db.Orders.belongsTo(db.PayMethods);
