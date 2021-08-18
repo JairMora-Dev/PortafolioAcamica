@@ -6,12 +6,20 @@ POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-    "user": "Delilah",
-    "name": "Delix Ana",
-    "password": "del0al10",
-    "email": "delilah@gmail.com",
-    "phone": 7890981,
-    "isAdmin": true
+    "name": "Robert Plan",
+    "password": "LedZeppelin",
+    "repeat_password": "LedZeppelin",
+    "email": "papuRobert@gmail.com",
+    "phone": 7896679
+}
+
+###
+POST http://localhost:5000/users/logIn
+Content-Type: application/json
+
+{
+    "email": "papuRobert@gmail.com",
+    "password": "LedZeppelin"
 }
 
 ###

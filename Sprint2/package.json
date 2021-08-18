@@ -21,9 +21,13 @@
   },
   "homepage": "https://github.com/jairMora007/PortafolioAcamica#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-jwt": "^6.1.0",
     "helmet": "^4.6.0",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.0",
     "sequelize": "^6.6.5",
     "swagger-jsdoc": "^6.1.0",
