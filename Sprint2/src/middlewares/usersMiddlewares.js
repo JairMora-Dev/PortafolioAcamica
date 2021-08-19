@@ -3,7 +3,7 @@ const expressJwt = require('express-jwt');
 
 const mypass = process.env.DB_MYPASSWORD
 
-exports.Use = (expressJwt({
+exports.expJWT = (expressJwt({
     secret: mypass,
     algorithms: ['HS256']
 }).unless({
@@ -11,7 +11,7 @@ exports.Use = (expressJwt({
 })
 );
 
-exports.Use =  ( async (err, req, res, _next) => {
+exports.invalidToken =  ( async (err, req, res, _next) => {
     if (err.name === 'UnauthorizedError') {
         await res.status(401).json('Token invalido');
     } else {

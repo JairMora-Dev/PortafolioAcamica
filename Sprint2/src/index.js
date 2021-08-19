@@ -17,10 +17,9 @@ const payMethodRouter = require('./routes/payMethods.routes');
 const orderRouter = require('./routes/orders.routes');
 
 
-const UserMiddleW = require('./middlewares/usersMiddlewares');
 
 
-app.use('/users', UserMiddleW.Use, userRouter);
+app.use('/users', userRouter);
 app.use('/User/adress', adressRouter);
 app.use('/products', productRouter);
 app.use('/pays', payMethodRouter);
