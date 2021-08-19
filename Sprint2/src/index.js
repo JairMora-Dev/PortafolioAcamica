@@ -9,21 +9,22 @@ PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 
-const insertAdmin = require('./schemas/insertAdmin')
+
 const userRouter = require('./routes/users.routes');
-const adressRouter = require('./routes/adresses.routes')
+const adressRouter = require('./routes/adresses.routes');
 const productRouter = require('./routes/products.routes');
 const payMethodRouter = require('./routes/payMethods.routes');
 const orderRouter = require('./routes/orders.routes');
 
 
+const UserMiddleW = require('./middlewares/usersMiddlewares');
 
-app.use('/users', userRouter);
+
+app.use('/users', UserMiddleW.Use, userRouter);
 app.use('/User/adress', adressRouter);
 app.use('/products', productRouter);
 app.use('/pays', payMethodRouter);
 app.use('/orders', orderRouter);
-
 
 
 
@@ -35,7 +36,12 @@ db.sequelize.sync({ force: false })
         console.log('This Project is connecting to MySQL DB');
         app.listen(PORT);
         console.log('Listen Port '+ PORT);
-        insertAdmin; //Generacion ADMIN       
+
+        async function insertAdmin( Admin ) {
+            Admin = await require('./schemas/insertAdmin');
+        }
+        insertAdmin();  //Generacion ADMIN   
+
     })
     .catch(err => {
         console.log('Error to concect to DB:' +err);

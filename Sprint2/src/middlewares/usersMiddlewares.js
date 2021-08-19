@@ -6,6 +6,8 @@ const mypass = process.env.DB_MYPASSWORD
 exports.Use = (expressJwt({
     secret: mypass,
     algorithms: ['HS256']
+}).unless({
+    path: ['/register', '/login'],
 })
 );
 
@@ -17,13 +19,3 @@ exports.Use =  ( async (err, req, res, _next) => {
     }
 });
 
-// exports.AdminMiddleware = async (req, res, next) => {
-//     Authorized = await db.Users.findOne({
-//         where:{
-//             email: 'delilah_resto@gmail.com',
-//             isAdmin: true
-//         }
-//     })
-//     if (Authorized){next()}
-//     else(res.status(404).json('Usted no puede acceder a esta ruta'))
-// };

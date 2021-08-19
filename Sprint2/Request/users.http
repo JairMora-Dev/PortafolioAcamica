@@ -55,5 +55,5 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:5000/users/removeUser/4
-Authorization: bearer aqui va el token
+DELETE http://localhost:5000/users/removeUser/3
+Authorization: bearer aquiToken
