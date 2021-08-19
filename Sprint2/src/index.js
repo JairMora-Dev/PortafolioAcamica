@@ -1,5 +1,6 @@
 const sequelize = require('./database/db');
 const express = require('express');
+const helmet = require('helmet');
 const db = require('./database/db')
 const app = express();
 
@@ -7,6 +8,7 @@ const app = express();
 require('dotenv').config('../.env');
 PORT = process.env.PORT || 5000;
 
+app.use(helmet())
 app.use(express.json());
 
 
