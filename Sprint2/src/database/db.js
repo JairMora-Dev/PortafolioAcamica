@@ -1,4 +1,6 @@
 require('dotenv').config('../../.env');
+const userValidation = require('../schemas/singIn.schema');
+const bcrypt = require('bcrypt');
 const { Sequelize, DataTypes } = require('sequelize');
 const { DB_HOST, DB_NAME, DB_USER,DB_PASSWORD } = process.env;
 
@@ -35,6 +37,19 @@ db.Orders.belongsToMany(db.Products, { through: 'Products_Orders' });
 
 db.PayMethods.hasOne(db.Orders);
 db.Orders.belongsTo(db.PayMethods);
+
+async function Admin (password) {
+    password = userValidation.validateAsync();
+    const userAdmin = await db.Users.create({
+      name: 'Delilah', 
+      password: bcrypt.hashSync( 'delilahKey1234', 10), 
+      email: 'delilah_resto@gmail.com', 
+      phone: 2345673,
+      isAdmin: true
+    });
+};
+
+Admin();
 
 
 module.exports = db;

@@ -6,10 +6,10 @@ POST http://localhost:5000/users/register
 Content-Type: application/json
 
 {
-    "name": "Robert Plan",
-    "password": "LedZeppelin",
-    "repeat_password": "LedZeppelin",
-    "email": "papuRobert@gmail.com",
+    "name": "Lenny Kravitz",
+    "password": "elpapuNigga",
+    "repeat_password": "elpapuNigga",
+    "email": "lenny_music@gmail.com",
     "phone": 7896679
 }
 
