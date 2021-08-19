@@ -38,8 +38,6 @@ db.PayMethods.hasOne(db.Orders);
 db.Orders.belongsTo(db.PayMethods);
 
 
-
-
 module.exports = db;
 
 

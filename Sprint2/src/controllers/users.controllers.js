@@ -1,7 +1,6 @@
 const db = require('../database/db');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
-const expressJwt = require('express-jwt');
 const userValidation = require('../schemas/singIn.schema');
 const ValidationLogIn = require('../schemas/logIn.Schema');
 
@@ -38,7 +37,9 @@ exports.createLogIn = async (req, res) => {
         const {
             password: userPassword,
             name
-        } = await db.Users.findOne({ email });
+        } = await db.Users.findOne({ 
+            where:{ email }
+        });
 
         const responseLogIn = bcrypt.compareSync(password, userPassword);
         if ( responseLogIn ) {
@@ -46,9 +47,9 @@ exports.createLogIn = async (req, res) => {
                 email,
                 name
             }, mySuperPassWord);
-            res.json( 'All in orden your token is: ' + token );
+            res.json( 'All in orden your income token is: ' + token );
         } else {
-            res.status(404).json('Unathorized');
+            res.status(404).json('Unathorized desde user.controllers');
         }
     } catch (error) {
         res.status(404).json(error);
