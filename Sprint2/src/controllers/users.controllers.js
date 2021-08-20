@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 const userValidation = require('../schemas/singIn.schema');
 const ValidationLogIn = require('../schemas/logIn.Schema');
+const { response } = require('express');
 
 const mySuperPassWord = process.env.DB_MYPASSWORD;
 
@@ -74,6 +75,27 @@ exports.destroy = async (req, res) => {
         res.json('usuario eliminado')
     }else{
         res.status(404).json('Porfavor verifique el el id del usuario a eliminar existe en nuestra BD');
+    }
+};
+
+exports.ActiveSateupdate = async (req, res) => {
+
+    const { id } = req.params;
+    const { isActive } = req.body;
+    const findId = await db.Users.findOne({
+        where: {
+            id
+        }
+    });
+    if (findId){
+        const updateStateUser = await db.Users.update({ isActive },{
+            where: {
+                id
+            }
+        });
+        res.status(200).json(`Usuario ${updateStateUser.name} se actualizo su estado de permisos`);
+    }else{
+        res.status(404).json('Porfavor verifique el el id del usuario a actualizar existe en nuestra BD');
     }
 };
 

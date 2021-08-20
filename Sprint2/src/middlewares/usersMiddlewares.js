@@ -1,5 +1,6 @@
 const db = require('../database/db');
 const expressJwt = require('express-jwt');
+const { Users } = require('../database/db');
 
 const mypass = process.env.DB_MYPASSWORD
 
@@ -31,4 +32,16 @@ exports.AdminToken = (async (req, res, next) =>{
         }
 });
 
+exports.NoRepeatUsers = (async (req, res, next) =>{
+    email = await db.Users.email;
+    const NoRepeatEmail  = await db.Users.findOne({
+        where: { email: req.body.email }
+    });
+    
+    if( email == NoRepeatEmail ){
+        next();
+    }else{
+        res.status(400).json('El Email suministrado ya esta registrado, porfavor ingrese otro');
+    }
+});
 
