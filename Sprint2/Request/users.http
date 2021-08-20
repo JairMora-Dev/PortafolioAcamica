@@ -55,5 +55,5 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:5000/users/removeUser/9
-Authorization: bearer  -Admin Token here-
+DELETE http://localhost:5000/users/removeUser/2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbGlsYWhfcmVzdG9AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjI5NDcxMDUxfQ.j7xy_oI3LQRnRS5mg7Hz_IA3JBBukTY-Uq_VqZi__4g

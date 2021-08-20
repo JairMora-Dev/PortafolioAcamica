@@ -4,7 +4,7 @@ const userRouter = express.Router();
 const User = require('../controllers/users.controllers');
 const middlewareU = require('../middlewares/usersMiddlewares')
 
-userRouter.use('/removeUser', middlewareU.expJWT, middlewareU.invalidToken);
+userRouter.use('/removeUser', middlewareU.expJWT, middlewareU.invalidToken, middlewareU.AdminToken );
 
 userRouter.get('/', User.getAll);
 userRouter.post('/register', User.create);

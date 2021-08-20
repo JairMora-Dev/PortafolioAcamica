@@ -36,7 +36,7 @@ exports.createLogIn = async (req, res) => {
 
         const {
             password: userPassword,
-            name
+            isAdmin
         } = await db.Users.findOne({ 
             where:{ email }
         });
@@ -45,7 +45,7 @@ exports.createLogIn = async (req, res) => {
         if ( responseLogIn ) {
             const token = jsonwebtoken.sign({
                 email,
-                name
+                isAdmin 
             }, mySuperPassWord);
             res.json( 'All in orden your income token is: ' + token );
         } else {
@@ -59,12 +59,22 @@ exports.createLogIn = async (req, res) => {
 
 exports.destroy = async (req, res) => {
     const { id } = req.params
-    const DeleteUser = await db.Users.destroy({
+    const findId = await db.Users.findOne({
         where: {
-            id: id
+            id
         }
     });
-    res.json(`Usuario eliminado`)
+
+    if( findId ){
+        const DeleteUser = await db.Users.destroy({
+            where: {
+                id: id
+            }
+        });
+        res.json('usuario eliminado')
+    }else{
+        res.status(404).json('Porfavor verifique el el id del usuario a eliminar existe en nuestra BD');
+    }
 };
 
 
