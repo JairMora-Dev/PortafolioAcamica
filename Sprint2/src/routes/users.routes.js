@@ -15,7 +15,7 @@ userRouter.use('/register', middlewareU.NoRepeatUsers);
 userRouter.get('/allUsers', User.getAll);
 userRouter.post('/register', User.create);
 userRouter.post('/logIn', User.createLogIn);
-userRouter.put('/updateUser', User.ActiveSateupdate);
+userRouter.put('/updateUser/:id', User.ActiveSateupdate);
 userRouter.delete('/removeUser/:id', User.destroy);
 
 

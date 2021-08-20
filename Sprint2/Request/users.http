@@ -33,5 +33,10 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:5000/users/removeUser/2
+PUT http://localhost:5000/users/updateUser/2
 Authorization: bearer -Admin token here-
+Content-Type: application/json
+
+{
+    "isActive": true
+}

@@ -57,7 +57,6 @@ exports.createLogIn = async (req, res) => {
     }
 };
 
-
 exports.destroy = async (req, res) => {
     const { id } = req.params
     const findId = await db.Users.findOne({
@@ -93,7 +92,8 @@ exports.ActiveSateupdate = async (req, res) => {
                 id
             }
         });
-        res.status(200).json(`Usuario ${updateStateUser.name} se actualizo su estado de permisos`);
+        res.status(200).json(`Usuario ${findId.name} actualizado, ahora su isActive esta: ${isActive}`);
+
     }else{
         res.status(404).json('Porfavor verifique el el id del usuario a actualizar existe en nuestra BD');
     }
