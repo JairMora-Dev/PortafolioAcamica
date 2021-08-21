@@ -1,6 +1,6 @@
 ###
 GET http://localhost:5000/users/allUsers
-Authorization: bearer -Admin token here-
+Authorization: bearer -Token admin here-
 ###
 POST http://localhost:5000/users/register
 Content-Type: application/json
@@ -34,7 +34,7 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:5000/users/updateUser/2
-Authorization: bearer -Admin token here-
+Authorization: bearer -Token admin here-
 Content-Type: application/json
 
 {

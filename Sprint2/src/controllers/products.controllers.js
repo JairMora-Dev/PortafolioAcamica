@@ -1,4 +1,5 @@
 const db = require('../database/db');
+const productRouter = require('../routes/products.routes');
 
 exports.getAll = async (req, res) => {
     const GetProducts = await db.Products.findAll({
@@ -8,28 +9,59 @@ exports.getAll = async (req, res) => {
 
 exports.create = async (req, res) => {
     const { productName, price } = req.body;
-    const newProduct = await db.Products.create({  productName, price  });
-    res.json(newProduct);
+    const FindproductName = await db.Products.findOne({
+        where: { 
+            productName
+        }
+    });
+
+    if( productName == FindproductName.productName ){
+        res.status(400).json('El nombre del producto que ingreso ya existe en el catalogo, porfavor ingrese otro');
+    }else{
+        const newProduct = await db.Products.create({  productName, price  });
+        res.status(200).json(newProduct);
+    }
 };
 
 exports.update = async (req, res) => {
     const { id } = req.params;
     const { productName, price } = req.body;
-    const updateProduct = await db.Products.update({ productName, price }, {
-        where: {
+
+    const FindIDproduct = await db.Products.findOne({
+        where: { 
             id
         }
     });
-    res.json(updateProduct);
+    
+    if(  FindIDproduct ){
+        const updateProduct = await db.Products.update({ productName, price }, {
+            where: {
+                id
+            }
+        });
+        res.json(updateProduct);
+    }else{
+        res.status(400).json('El id del producto a actualizar no existe, por favor verifique su solicitud');
+    }
 };
 
 exports.destroy = async (req, res) => {
     const { id } = req.params;
-    const deleteProduct = await db.Products.destroy({
-        where: {
-            id: id
+    const FindIDproduct = await db.Products.findOne({
+        where: { 
+            id
         }
     });
-    res.json('Producto eliminado exitosamente');
-}
+
+    if (FindIDproduct){
+        const deleteProduct = await db.Products.destroy({
+            where: {
+                id: id
+            }
+        });
+        res.status(200).json('Producto eliminado exitosamente');
+    }else{
+        res.status(400).json('El id del producto a eliminar no existe porfavor, verifique su slicitud');
+    }
+};
 

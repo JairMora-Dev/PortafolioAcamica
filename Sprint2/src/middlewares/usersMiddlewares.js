@@ -19,7 +19,7 @@ exports.invalidToken =  ( async (err, req, res, _next) => {
 
 
 exports.AdminToken = (async (req, res, next) =>{
-    const { email } = req.user;
+    const { email } = req.user;      
     const AdminAccess = await db.Users.findOne({
         where: {
             isAdmin: true
