@@ -4,6 +4,8 @@ USE DelilahS2_DB;
 ALTER TABLE products CHANGE COLUMN createdAt createdAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP;
 ALTER TABLE products CHANGE COLUMN updatedAt updatedAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
+
+-- Products
 INSERT INTO products ( productName, price )
 VALUES ( 'Sandwich Veggie', 190 );
 
@@ -31,5 +33,24 @@ VALUES ( 'Copa de vino', 80 );
 INSERT INTO products ( productName, price )
 VALUES ( 'Agua Mineral', 40 );
 
+-- Pay methods
+ 
+ALTER TABLE payMethods CHANGE COLUMN createdAt createdAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE payMethods CHANGE COLUMN updatedAt updatedAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+INSERT INTO payMethods ( NamePay )
+VALUES ( 'Efectivo' );
+
+INSERT INTO payMethods ( NamePay )
+VALUES ( 'Tarjeta debido' );
+
+INSERT INTO payMethods ( NamePay )
+VALUES ( 'Tarjeta credito' );
+
+INSERT INTO payMethods ( NamePay )
+VALUES ( 'PSI' );
+
+INSERT INTO payMethods ( NamePay )
+VALUES ( 'Bono o puntos DelilahResto' );
 
 

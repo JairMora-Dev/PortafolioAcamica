@@ -1,8 +1,8 @@
 require('dotenv').config('../../.env');
 const { Sequelize, DataTypes } = require('sequelize');
-const ValidationLogIn = require('../schemas/logIn.Schema');
-const { DB_HOST, DB_NAME, DB_USER, DB_PASSWORD } = process.env;
 
+
+const { DB_HOST, DB_NAME, DB_USER, DB_PASSWORD } = process.env;
 
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
     host: DB_HOST,

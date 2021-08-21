@@ -1,5 +1,5 @@
 const db = require('../database/db');
-const productRouter = require('../routes/products.routes');
+
 
 exports.getAll = async (req, res) => {
     const GetProducts = await db.Products.findAll({
