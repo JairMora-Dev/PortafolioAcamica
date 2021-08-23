@@ -1,20 +1,20 @@
 ###
 GET http://localhost:5000/products
-Authorization: bearer -Admin token here-
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbGlsYWhfcmVzdG9AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjI5NzYxNjM3fQ.epb7vO37Q0-K7gJcvU9mh8OgSXYleeQ77nzB2Z279Ic
 
 ###
 POST http://localhost:5000/products/postProduct
-Authorization: bearer -Admin token here-
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbGlsYWhfcmVzdG9AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjI5NzYxNjM3fQ.epb7vO37Q0-K7gJcvU9mh8OgSXYleeQ77nzB2Z279Ic
 Content-Type: application/json
 
 {
-    "productName": "Limonada", 
+    "productName": "Agua mineral", 
     "price": 40
 }
 
 ###
-PUT http://localhost:5000/products/updateProduct/10
-Authorization: bearer -Admin token here-
+PUT http://localhost:5000/products/updateProduct/9
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbGlsYWhfcmVzdG9AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjI5NzYxNjM3fQ.epb7vO37Q0-K7gJcvU9mh8OgSXYleeQ77nzB2Z279Ic
 Content-Type:  application/json
 
 {
@@ -23,5 +23,5 @@ Content-Type:  application/json
 }
 
 ###
-DELETE http://localhost:5000/products/removeProduct/12
-Authorization: bearer -Admin token here-
+DELETE http://localhost:5000/products/removeProduct/9
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbGlsYWhfcmVzdG9AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjI5NzYxNjM3fQ.epb7vO37Q0-K7gJcvU9mh8OgSXYleeQ77nzB2Z279Ic
