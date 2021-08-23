@@ -102,7 +102,7 @@ exports.ActiveSateupdate = async (req, res) => {
 
 exports.getAll = async (req, res) => {
     const GetUsers = await db.Users.findAll({
-        include: ['orders']
+        include: ['orders', 'addresses']
     });
     res.json(GetUsers);
 };
