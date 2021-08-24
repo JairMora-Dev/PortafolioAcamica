@@ -24,7 +24,7 @@ exports.getAll = async (req, res) => {
             }
         }
     } catch (error) {
-        res.status(401).json('Su email no corresponde con el token de acceso recibido, por favor rectifique su solicitud');
+        res.status(401).json(error);
     }
 };
 
@@ -52,8 +52,7 @@ exports.create = async (req, res) => {
             }  
         }
     }catch (error) {
-        res.status(401).json('Su email no corresponde con el token de acceso recibido, por favor rectifique su solicitud');        
-    }
+        res.status(401).json(error);    }
 };
 
 exports.update = async (req, res) => {
@@ -95,8 +94,7 @@ exports.update = async (req, res) => {
         }
         
     } catch (error) {
-        res.status(401).json('Su email no corresponde con el token de acceso recibido, porfavor rectifique su solicitud');
-    }
+        res.status(401).json(error);    }
 };
 
 
@@ -135,6 +133,5 @@ exports.destroy = async (req, res) => {
         }
 
     } catch (error) {
-        res.error(400).json('Su email no corresponde con el token de acceso recibido, porfavor rectifique su solicitud')
-    }
+        res.status(401).json(error);    }
 };

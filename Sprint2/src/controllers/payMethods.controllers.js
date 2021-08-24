@@ -1,9 +1,13 @@
 const db = require('../database/db');
 
 exports.getAll = async (req, res) => {
-    const getPayMethods = await db.PayMethods.findAll({ 
-    });
-    res.json(getPayMethods);
+    try {
+        const getPayMethods = await db.PayMethods.findAll({ 
+        });
+        res.json(getPayMethods);
+    } catch (error) {
+        res.status(400).json(error);
+    }
 };
 
 exports.create = async (req, res) => {
@@ -14,12 +18,21 @@ exports.create = async (req, res) => {
         }
     });
     
-    if( NamePay == FindPayName.NamePay ){
-        res.status(400).json('El nombre de metodo de pago ya existe, porfavor verifique su solicitud');
-    }else{
-        const newPayMeth = await db.PayMethods.create({ NamePay });
+    try {
+        const newPayMeth = await db.PayMethods.findOrCreate({ 
+            where:{
+                NamePay
+            },
+            defaults:{
+                NamePay: req.body.NamePay
+            } 
+        });
         res.status(200).json(newPayMeth);
+        
+    } catch (error) {
+        res.status(400).json(error);
     }
+    
 };
 
 exports.update = async (req, res) => {
@@ -29,15 +42,19 @@ exports.update = async (req, res) => {
         where: { id }
     });
     
-    if( IdPayMeth ){
-        const updatePayMeth = await db.PayMethods.update({ NamePay },{
-            where:{
-                id
-            }
-        });
-        res.status(201).json(updatePayMeth);
-    }else{
-        res.status(400).json('El id del metodo de pago no existe, porfavor verifique su solicitud');
+    try {
+        if( IdPayMeth ){
+            const updatePayMeth = await db.PayMethods.update({ NamePay },{
+                where:{
+                    id
+                }
+            });
+            res.status(201).json(updatePayMeth);
+        }else{
+            res.status(400).json('El id del metodo de pago no existe, porfavor verifique su solicitud');
+        }
+    } catch (error) {
+        res.status(400).json(error);
     }
 };
 
@@ -47,14 +64,18 @@ exports.destroy = async (req, res) => {
         where: { id }
     });
 
-    if(IdPayMeth){
-        await db.PayMethods.destroy({
-            where: {
-                id: id 
-            }
-        });
-        res.status(200).json('Metodo de pago aliminado');
-    }else{
-        res.status(400).json('El id del metodo de pago no existe, porfavor verifique su solicitud');      
+    try {
+        if(IdPayMeth){
+            await db.PayMethods.destroy({
+                where: {
+                    id: id 
+                }
+            });
+            res.status(200).json('Metodo de pago aliminado');
+        }else{
+            res.status(400).json('El id del metodo de pago no existe, porfavor verifique su solicitud');      
+        }
+    } catch (error) {
+        res.status(400).json(error);      
     }
 };

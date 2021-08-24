@@ -27,7 +27,7 @@ exports.create = async (req, res) => {
 
         res.status(200).json(`Producto ${productName} creado`);
     } catch (error) {
-        res.status(400).json(error + 'no');
+        res.status(400).json(error);
     }
 };
 
