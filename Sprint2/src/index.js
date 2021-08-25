@@ -41,7 +41,7 @@ db.sequelize.sync({ force: false })
         async function insertAdmin( Admin ) {
             Admin = await require('./seeds/insertAdmin');
         }
-        insertAdmin();  //Generacion ADMIN   
+        insertAdmin();  //Generacion ADMIN  y user 
 
     })
     .catch(err => {

@@ -22,6 +22,22 @@ async function Admin (name, password, email, phone, isAdmin) {
      })
  };
  
+ async function User (name, password, email, phone, isUser) {
+  name, password, email, phone, isAdmin  = userValidation.validateAsync();
+  await db.Users.findOrCreate({
+     where: {
+       name: "Lenny Kravitz",
+       isAdmin: false
+     },
+     defaults: {
+       name: 'Lenny Kravitz', 
+       password: bcrypt.hashSync('elpapuNigga', 10), 
+       email: 'lenny_music@gmail.com', 
+       phone: 3569824,
+       isAdmin: false
+     }
+   })
+};
 
 
- module.exports = Admin();
+ module.exports = Admin(), User();
