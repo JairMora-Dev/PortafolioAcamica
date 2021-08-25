@@ -61,3 +61,9 @@ VALUES ( 'Cll 14A #15-7', 1);
 
 INSERT INTO addresses ( place, userId )
 VALUES ( 'CRA 23 #5B-12', 1);
+
+INSERT INTO addresses ( place, userId )
+VALUES ( 'CRA Hollywood #34 - 45', 2);
+
+INSERT INTO addresses ( place, userId )
+VALUES ( 'AV BeberlyHills #2BIS - 1', 2);
