@@ -30,8 +30,8 @@ db.Users.hasMany(db.Addresses);
 db.Addresses.belongsTo(db.Users);
 
 //BD_ORDERS
-db.Products.belongsToMany(db.Orders, { through: 'Products_Orders' });
-db.Orders.belongsToMany(db.Products, { through: 'Products_Orders' });
+db.Orders.belongsToMany(db.Products, { through: 'Orders_Products' });
+db.Products.belongsToMany(db.Orders, { through: 'Orders_Products' });
 
 
 db.PayMethods.hasOne(db.Orders);
@@ -39,14 +39,3 @@ db.Orders.belongsTo(db.PayMethods);
 
 
 module.exports = db;
-
-
-
-
-
-
-
-
-
-
-

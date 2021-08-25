@@ -8,9 +8,9 @@ module.exports = ( sequelize, DataTypes ) =>{
             type: DataTypes.FLOAT,
             allowNull: false
         },
-        orderId: {
+        quantity: {
             type: DataTypes.INTEGER,
-            defaultValue: null
+            defaultValue: 1
         }
     });
     return Product

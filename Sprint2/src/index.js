@@ -39,7 +39,7 @@ db.sequelize.sync({ force: false })
         console.log('Listen Port '+ PORT);
 
         async function insertAdmin( Admin ) {
-            Admin = await require('./schemas/insertAdmin');
+            Admin = await require('./seeds/insertAdmin');
         }
         insertAdmin();  //Generacion ADMIN   
 
