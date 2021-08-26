@@ -1,36 +1,46 @@
 ###
-GET http://localhost:5000/users/adress/delilah_resto@gmail.com
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbGlsYWhfcmVzdG9AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjI5NzU3NDg0fQ.vTjZC_KkVvgfW4AjcmkJK6KbqrDlQcOsxmmSdJEtiDE
-
-###
-GET http://localhost:5000/users/adress/lenny_music@gmail.com
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxlbm55X211c2ljQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Mjk3NTYwOTR9.JlVlf_XcIDU9RCysJpO-n99QOyVS2F1ed4huWaKGw3s
-
-
-###
-POST http://localhost:5000/users/adress/newAdress/delilah_resto@gmail.com
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbGlsYWhfcmVzdG9AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjI5NzU3NDg0fQ.vTjZC_KkVvgfW4AjcmkJK6KbqrDlQcOsxmmSdJEtiDE
+GET http://localhost:5000/adress/1
+Authorization: bearer -User token here-
 Content-Type: application/json
 
 {
+    "email": "delilah_resto@gmail.com"
+}
+
+###
+GET http://localhost:5000/adress/2
+Authorization: bearer -User token here-
+Content-Type: application/json
+
+{
+    "email": "lenny_music@gmail.com"
+}
+
+###
+POST http://localhost:5000/adress/newAdress/
+Authorization: bearer -User token here-
+Content-Type: application/json
+
+{
+    "email": "lenny_music@gmail.com",
     "place": "CRA 55 #55A-24"
 }
 
 
 ###
-PUT http://localhost:5000/users/adress/updateAdress/14
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxlbm55X211c2ljQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Mjk3NTYwOTR9.JlVlf_XcIDU9RCysJpO-n99QOyVS2F1ed4huWaKGw3s
+PUT http://localhost:5000/adress/updateAdress/1
+Authorization: bearer -User token here-
 Content-Type: application/json
 
 {
-    "place": "CRA 34 #11Bis-34",
+    "place": "AV simepreViva #89-34",
     "email": "lenny_music@gmail.com"
 }
 
 
 ###
-DELETE  http://localhost:5000/users/adress/deleteAdress/14
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxlbm55X211c2ljQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Mjk3NTYwOTR9.JlVlf_XcIDU9RCysJpO-n99QOyVS2F1ed4huWaKGw3s
+DELETE  http://localhost:5000/adress/deleteAdress/19
+Authorization: bearer -User token here-
 Content-Type: application/json
 
 {

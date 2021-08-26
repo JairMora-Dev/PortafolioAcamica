@@ -45,3 +45,22 @@ exports.NoRepeatUsers = (async (req, res, next) =>{
     }
 });
 
+exports.EmailToken = (async (req, res, next) =>{
+    const token = req.user.email;
+    const { email } = req.body;
+    const UserEmTo = await db.Users.findOne({
+        where:{
+            email
+        }
+    });
+    if (UserEmTo) {
+        if (token == UserEmTo.email) {
+            next();
+        } else {
+            res.status(401).json('Email y token no coinciden');
+        }
+    } else {
+        res.status(400).json('El email suministrado no existe en nuestra BD');
+    }
+});
+

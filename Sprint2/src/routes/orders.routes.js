@@ -2,11 +2,11 @@ const express = require('express');
 const orderRouter = express.Router();
 
 const Order = require('../controllers/orders.controllers');
-const usersMiddleware = require('../middlewares/usersMiddlewares');
+const UMid = require('../middlewares/usersMiddlewares');
 
-orderRouter.use('/getAllorders', usersMiddleware.expJWT, usersMiddleware.invalidToken, usersMiddleware.AdminToken);
-orderRouter.use('/postOrder', usersMiddleware.expJWT, usersMiddleware.invalidToken);
-orderRouter.use('/updateOrder', usersMiddleware.expJWT, usersMiddleware.invalidToken);
+orderRouter.use('/', UMid.expJWT, UMid.invalidToken, UMid.EmailToken);
+orderRouter.use('/getAllorders', UMid.expJWT, UMid.invalidToken, UMid.EmailToken, UMid.AdminToken);
+
 
 
 

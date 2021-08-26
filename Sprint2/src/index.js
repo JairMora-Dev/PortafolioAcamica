@@ -22,7 +22,7 @@ const orderRouter = require('./routes/orders.routes');
 
 
 app.use('/users', userRouter);
-app.use('/users/adress', adressRouter);
+app.use('/adress', adressRouter);
 app.use('/products', productRouter);
 app.use('/pays', payMethodRouter);
 app.use('/orders', orderRouter);

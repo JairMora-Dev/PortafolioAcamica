@@ -2,16 +2,14 @@ const express = require('express');
 const adressRouter = express.Router();
 
 const Adress = require('../controllers/adresses.controllers');
-const UsersMiddlewares = require('../middlewares/usersMiddlewares');
+const UMiddl = require('../middlewares/usersMiddlewares');
 
 
-adressRouter.use('/', UsersMiddlewares.expJWT, UsersMiddlewares.invalidToken);
-adressRouter.use('/newAdress', UsersMiddlewares.expJWT, UsersMiddlewares.invalidToken);
-adressRouter.use('/updateAdress', UsersMiddlewares.expJWT, UsersMiddlewares.invalidToken);
-adressRouter.use('/deleteAdress', UsersMiddlewares.expJWT, UsersMiddlewares.invalidToken);
+adressRouter.use('/', UMiddl.expJWT, UMiddl.invalidToken, UMiddl.EmailToken);
 
-adressRouter.get('/:email', Adress.getAll);
-adressRouter.post('/newAdress/:email', Adress.create);
+
+adressRouter.get('/:id', Adress.getAll);
+adressRouter.post('/newAdress/', Adress.create);
 adressRouter.put('/updateAdress/:id', Adress.update);
 adressRouter.delete('/deleteAdress/:id', Adress.destroy);
 

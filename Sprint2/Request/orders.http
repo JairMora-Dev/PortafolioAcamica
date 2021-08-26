@@ -2,12 +2,12 @@
 GET http://localhost:5000/orders
 
 ###
-PUT http://localhost:5000/orders/postOrder/2
+POST http://localhost:5000/orders/postOrder/5
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxlbm55X211c2ljQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Mjk5NDAzNjh9.vkH6kXtYh3V9st-ImiAYwd_JFr3y-XJ0kN1OHYxe5bA
 Content-Type: application/json
 
 {
-    "totalCost": 0,
-    "quantityProducts": 1,
+   "email": "lenny_music@gmail.com"
 }
 
 

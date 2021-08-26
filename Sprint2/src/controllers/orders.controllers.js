@@ -1,4 +1,4 @@
-const { Products } = require('../database/db');
+const { Products, Orders } = require('../database/db');
 const db = require('../database/db');
 
 exports.getAll = async (req, res) => {
@@ -15,15 +15,7 @@ exports.getAll = async (req, res) => {
 
 //incorporar un producto a la orden
 exports.create = async (req, res) => {
-    const userToken = req.user.email;
     const { productId }= req.params;
-    const { email } = req.body;
-
-    const UserOrder = await db.Users.findOne({
-        where: {
-            email
-        }
-    });
 
     const ProductOrder = await db.Products.findOne({
         where:{
@@ -32,36 +24,9 @@ exports.create = async (req, res) => {
     });
 
     try {
-        if( userToken != UserOrder.email ){
-            res.status(401).json('Mi socio su token paila');
-        }else{
-            
-            
-        const newOrder = await db.Orders.findOne({
-                where:{
-                    userId: UserOrder.id
-                }
-            });
-        await newOrder.addProducts(ProductOrder.id, { through: { selfGranted: false } }) 
-        await db.Orders.findOrCreate({
-            where: {
-                stateOrder: 'pendiente'
-            },
-            default: {
-                newOrder
-            }
-        });
-        
-        const result = await db.Orders.findOne({
-               where:{
-                    id: newOrder.id
-               },
-               include:['products']
-           });
-           res.status(200).json(result);
-        }
+        res.json('hola try')
     } catch (error) {
-        res.status(401).json('Mi socio su token paila desde catch');
+        res.status(500).json(error);
     }
 };
 
