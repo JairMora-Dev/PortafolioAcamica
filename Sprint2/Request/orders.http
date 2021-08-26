@@ -1,13 +1,30 @@
 ###
-GET http://localhost:5000/orders
+GET http://localhost:5000/orders/getAllorders
+Authorization: bearer -Admin token here-
+Content-Type: application/json
+
+{
+   "email": "delilah_resto@gmail.com"
+}
 
 ###
-POST http://localhost:5000/orders/postOrder/5
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxlbm55X211c2ljQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2Mjk5NDAzNjh9.vkH6kXtYh3V9st-ImiAYwd_JFr3y-XJ0kN1OHYxe5bA
+POST http://localhost:5000/orders/postOrder/6
+Authorization: bearer -User token here-
 Content-Type: application/json
 
 {
    "email": "lenny_music@gmail.com"
+}
+
+
+###
+###
+POST http://localhost:5000/orders/postOrder/8
+Authorization: bearer -Admin token here-
+Content-Type: application/json
+
+{
+   "email": "delilah_resto@gmail.com"
 }
 
 
