@@ -3,12 +3,12 @@ const payRoutes = express.Router();
 
 
 const PayMethod = require('../controllers/payMethods.controllers');
-const UsersMiddlewares = require('../middlewares/usersMiddlewares');
+const UMidd = require('../middlewares/usersMiddlewares');
 
-payRoutes.use('/', UsersMiddlewares.expJWT, UsersMiddlewares.invalidToken );
-payRoutes.use('/newPayMeth', UsersMiddlewares.expJWT, UsersMiddlewares.invalidToken, UsersMiddlewares.AdminToken);
-payRoutes.use('/updatePayMeth', UsersMiddlewares.expJWT, UsersMiddlewares.invalidToken, UsersMiddlewares.AdminToken);
-payRoutes.use('/deletePayMeth', UsersMiddlewares.expJWT, UsersMiddlewares.invalidToken, UsersMiddlewares.AdminToken);
+payRoutes.use('/', UMidd.expJWT, UMidd.invalidToken, UMidd.EmailToken);
+payRoutes.use('/newPayMeth', UMidd.AdminToken);
+payRoutes.use('/updatePayMeth', UMidd.AdminToken);
+payRoutes.use('/deletePayMeth', UMidd.AdminToken);
 
 payRoutes.get('/', PayMethod.getAll);
 payRoutes.post('/newPayMeth', PayMethod.create);

@@ -1,6 +1,11 @@
 ###
 GET http://localhost:5000/products
-Authorization: bearer -Admin token here-
+Authorization: bearer -User token here-
+Content-Type: application/json
+
+{
+    "email": "lenny_music@gmail.com"
+}
 
 ###
 POST http://localhost:5000/products/postProduct
@@ -8,6 +13,7 @@ Authorization: bearer -Admin token here-
 Content-Type: application/json
 
 {
+    "email": "delilah_resto@gmail.com",
     "productName": "Agua mineral", 
     "price": 40
 }
@@ -18,6 +24,7 @@ Authorization: bearer -Admin token here-
 Content-Type:  application/json
 
 {
+    "email": "delilah_resto@gmail.com",
     "productName": "Agua",
     "price": 37
 }
@@ -25,3 +32,8 @@ Content-Type:  application/json
 ###
 DELETE http://localhost:5000/products/removeProduct/9
 Authorization: bearer -Admin token here-
+Content-Type: application/json
+
+{
+    "email": "delilah_resto@gmail.com"
+}

@@ -1,6 +1,11 @@
 ###
 GET http://localhost:5000/pays
-Authorization: bearer -Admin token here-
+Authorization: bearer -User token here-
+Content-Type: application/json
+
+{
+    "email": "lenny_music@gmail.com"
+}
 
 ###
 POST http://localhost:5000/pays/newPayMeth
@@ -8,6 +13,7 @@ Authorization: bearer -Admin token here-
 Content-Type: application/json
 
 {
+    "email": "delilah_resto@gmail.com",
     "NamePay": "Pago Nequi"
 }
 
@@ -17,9 +23,15 @@ Authorization: bearer -Admin token here-
 Content-Type:  application/json
 
 {
+    "email": "delilah_resto@gmail.com",
     "NamePay": "Pago PSI"
 }
 
 ###
 DELETE http://localhost:5000/pays/deletePayMeth/5
 Authorization: bearer -Admin token here-
+Content-Type: application/json
+
+{
+    "email": "delilah_resto@gmail.com"
+}

@@ -2,14 +2,13 @@ const express = require('express');
 const productRouter = express.Router();
 
 const Product = require('../controllers/products.controllers');
-const usersMiddlewares = require('../middlewares/usersMiddlewares');
-const userRouter = require('./users.routes');
+const UMidd = require('../middlewares/usersMiddlewares');
 
-productRouter.use('/postProduct', usersMiddlewares.expJWT, usersMiddlewares.invalidToken, usersMiddlewares.AdminToken);
-productRouter.use('/updateProduct', usersMiddlewares.expJWT, usersMiddlewares.invalidToken, usersMiddlewares.AdminToken);
-productRouter.use('/removeProduct', usersMiddlewares.expJWT, usersMiddlewares.invalidToken, usersMiddlewares.AdminToken);
+productRouter.use('/', UMidd.expJWT, UMidd.invalidToken, UMidd.EmailToken);
+productRouter.use('/postProduct', UMidd.AdminToken);
+productRouter.use('/updateProduct', UMidd.AdminToken);
+productRouter.use('/removeProduct', UMidd.AdminToken);
 
-productRouter.use('/', usersMiddlewares.expJWT, usersMiddlewares.invalidToken);
 
 productRouter.get('/', Product.getAll);
 productRouter.post('/postProduct', Product.create);
