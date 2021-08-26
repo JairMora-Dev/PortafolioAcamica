@@ -11,7 +11,7 @@ orderRouter.use('/updateOrder', usersMiddleware.expJWT, usersMiddleware.invalidT
 
 
 orderRouter.get('/getAllorders', Order.getAll);
-orderRouter.post('/postOrder/:id', Order.create);
+orderRouter.post('/postOrder/:productId', Order.create);
 orderRouter.put('/updateOrder', Order.update);
 orderRouter.delete('/removeOrder/:id', Order.destroy);
 

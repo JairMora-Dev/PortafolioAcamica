@@ -13,37 +13,55 @@ exports.getAll = async (req, res) => {
 
 };
 
-
+//incorporar un producto a la orden
 exports.create = async (req, res) => {
-    const { id } = req.params
-    const { email, payMethodId } = req.body;
     const userToken = req.user.email;
-    const UserOrder = await db.Users.findOne({ 
-        //include: [ 'orders' ],
+    const { productId }= req.params;
+    const { email } = req.body;
+
+    const UserOrder = await db.Users.findOne({
         where: {
             email
         }
     });
-    const ProductsOrder = await db.Products.findOne({
-        where: {
-            id
+
+    const ProductOrder = await db.Products.findOne({
+        where:{
+            id: productId
         }
     });
-    
+
     try {
-        if( UserOrder.email != userToken ){
-            res.status(401).json('El email enviado no corresponde al token de acceso, porfavor rectifique su solicitud');
+        if( userToken != UserOrder.email ){
+            res.status(401).json('Mi socio su token paila');
         }else{
-            const newOrder = db.Orders.create({ 
-                payMethodId, 
-                userId: UserOrder.id,            
-            },{
-                include: ['products'],
+            
+            
+        const newOrder = await db.Orders.findOne({
+                where:{
+                    userId: UserOrder.id
+                }
             });
+        await newOrder.addProducts(ProductOrder.id, { through: { selfGranted: false } }) 
+        await db.Orders.findOrCreate({
+            where: {
+                stateOrder: 'pendiente'
+            },
+            default: {
+                newOrder
+            }
+        });
+        
+        const result = await db.Orders.findOne({
+               where:{
+                    id: newOrder.id
+               },
+               include:['products']
+           });
+           res.status(200).json(result);
         }
-        res.json(newOrder);
     } catch (error) {
-        res.status(400).json(error);
+        res.status(401).json('Mi socio su token paila desde catch');
     }
 };
 
