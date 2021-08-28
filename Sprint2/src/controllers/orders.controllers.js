@@ -3,7 +3,7 @@ const db = require('../database/db');
 exports.getAll = async (req, res) => {
     try {
         const GetAllOrders = await db.Orders.findAll({
-            include: ['products']
+            include: ['operations']
         });
         res.json(GetAllOrders);
     } catch (error) {
@@ -22,6 +22,7 @@ exports.create = async (req, res) => {
    
         if (GetProduct){
             if(!GetOrder){
+
                 const newOrder = await db.Orders.create({ userId: GetUser.id });
                 const operation = await db.Operations.create({
                     productId: GetProduct.id,
@@ -29,15 +30,29 @@ exports.create = async (req, res) => {
                     ValueProduct: GetProduct.price,
                     orderId: newOrder.id
                 });
-
                 await newOrder.addOperations(operation, { through: { selfGranted: false } });
-
-                const result = await db.Orders.findOne({
-                    where:{ userId: GetUser.id },
+                const Result = await db.Orders.findOne({
+                    where:{ 
+                        userId: GetUser.id
+                     },
                     include:['operations']
                 });
+                const ConstOper = await db.Operations.findAll({
+                    where:{
+                        orderId: Result.id
+                    }
+                });
+                const ReduceResult = await ConstOper.reduce((a,b) => a+(b.ValueProduct * b.quantity), 0);
+                await db.Orders.update({
+                        totalCost: ReduceResult
+                    },{
+                        where: {
+                            id: Result.id
+                        }
+                });  
 
-                res.status(200).json(result);
+                res.status(201).json(Result.operations);
+
             }else{
 
                 const GetOperation = await db.Operations.findOne({ 
@@ -63,13 +78,24 @@ exports.create = async (req, res) => {
                             productId: GetProduct.id 
                         }
                     });
-                    const result = await db.Orders.findOne({
+                    const Result = await db.Orders.findOne({
                         where:{ userId: GetUser.id },
                         include:['operations']
                     });
-                    res.status(200).json(result);
-
-                    //res.status(200).json('Hola if');
+                    const ConstOper = await db.Operations.findAll({
+                        where:{
+                            orderId: Result.id
+                        }
+                    });
+                    const ReduceResult = await ConstOper.reduce((a,b) => a+(b.ValueProduct * b.quantity), 0);
+                    await db.Orders.update({
+                            totalCost: ReduceResult
+                        },{
+                            where: {
+                                id: Result.id
+                            }
+                    }); 
+                    res.status(200).json(Result.operations);
                 }
                 else{ 
 
@@ -98,7 +124,7 @@ exports.create = async (req, res) => {
 
                     const ConstOper = await db.Operations.findAll({
                         where:{
-                            orderId: Result.id
+                            orderId: Result.id,
                         }
                     });
                     
@@ -111,12 +137,31 @@ exports.create = async (req, res) => {
                                 id: Result.id
                             }
                     });  
-                    res.status(200).json(Result);
+                    res.status(200).json(Result.operations);
                 }
             }
         } else {
             res.status(400).json('El id del producto ingresado no existe');
         }
+};
+
+//Obtener orden del usuario con id user
+exports.getOUserId = async (req, res) => {
+    const { email } = req.body;
+    const UserId = await db.Users.findOne({ where: {email} });
+    try {
+        const UsersOrder = await db.Orders.findAll({
+            where: { 
+                userId: UserId.id, 
+                stateOrder: 'pendiente' 
+            },
+            include:['operations']
+        });
+        res.status(200).json(UsersOrder);
+
+    } catch (error){
+        res.status(400).json(error);
+    }
 };
 
 

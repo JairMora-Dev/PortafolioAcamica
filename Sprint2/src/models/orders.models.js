@@ -5,11 +5,6 @@ module.exports = ( sequelize, DataTypes ) =>{
             allowNull: false,
             defaultValue: 0
         },
-        quantityProducts:{
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0
-        },
         stateOrder:{
             type: DataTypes.STRING,
             allowNull: false,
