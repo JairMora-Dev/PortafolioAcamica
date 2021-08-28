@@ -8,8 +8,8 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5000/orders/postOrder/6
-Authorization: bearer -User token here-
+POST http://localhost:5000/orders/postOrder/8
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxlbm55X211c2ljQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MzAwMDQ1MTB9.JE02NZvTiLuyLX4N3uUcRqrRZHso7qPK9J94TJuMztw
 Content-Type: application/json
 
 {
@@ -19,14 +19,24 @@ Content-Type: application/json
 
 ###
 ###
-POST http://localhost:5000/orders/postOrder/8
-Authorization: bearer -Admin token here-
+POST http://localhost:5000/orders/postOrder/1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRlbGlsYWhfcmVzdG9AZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjMwMDA4NzY1fQ.JKw1hMuuKrES8ljAoqKfll6aB7lWEEMiEapHDD62jUI
 Content-Type: application/json
 
 {
    "email": "delilah_resto@gmail.com"
 }
 
+
+
+###
+POST http://localhost:5000/orders/prueba/8
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxlbm55X211c2ljQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MzAwMDQ1MTB9.JE02NZvTiLuyLX4N3uUcRqrRZHso7qPK9J94TJuMztw
+Content-Type: application/json
+
+{
+   "email": "lenny_music@gmail.com"
+}
 
 
 

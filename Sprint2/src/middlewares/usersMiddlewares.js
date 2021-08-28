@@ -26,7 +26,7 @@ exports.AdminToken = (async (req, res, next) =>{
         }
     });  
         if( AdminAccess.email != email ){
-            res.status(401).json('Usted no cuenta con credenciales de Administrador de esta app');
+            res.status(403).json('Usted no cuenta con credenciales de Administrador de esta app');
         }else{
             next();
         }

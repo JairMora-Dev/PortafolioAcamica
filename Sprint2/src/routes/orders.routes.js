@@ -12,8 +12,9 @@ orderRouter.use('/getAllorders', UMid.expJWT, UMid.invalidToken, UMid.EmailToken
 
 orderRouter.get('/getAllorders', Order.getAll);
 orderRouter.post('/postOrder/:id', Order.create);
-orderRouter.put('/updateOrder', Order.update);
-orderRouter.delete('/removeOrder/:id', Order.destroy);
+//orderRouter.put('/updateOrder', Order.update);
+//orderRouter.delete('/removeOrder/:id', Order.destroy);
+
 
 
 

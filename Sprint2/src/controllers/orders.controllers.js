@@ -1,98 +1,122 @@
-const { Products, Orders } = require('../database/db');
 const db = require('../database/db');
 
 exports.getAll = async (req, res) => {
     try {
-        const GetOrders = await db.Orders.findAll({
+        const GetAllOrders = await db.Orders.findAll({
             include: ['products']
         });
-        res.json(GetOrders);
+        res.json(GetAllOrders);
     } catch (error) {
         res.status(400).json(error);
     }
-
 };
 
 //incorporar un producto a la orden
 exports.create = async (req, res) => {
-    const { id }= req.params;
+    const { id } = req.params;
     const { email } = req.body;
-    const GetEmailUser = await db.Users.findOne({
-        where:{
-            email
-        }
-    });
-    const ProductOrder = await db.Products.findOne({
-        where:{
-            id
-        }
-    });
-    try {
-        if (ProductOrder) {
-            const NewOrder = await db.Orders.findOne({  
-                where:{
-                    userId: GetEmailUser.id,
-                    stateOrder: 'Pendiente'
-                }
-            });
-            if( NewOrder ){
-                const agreeProduct = await db.Products.create({ 
-                    productName: ProductOrder.productName,
-                    price: ProductOrder.price
+    const GetProduct = await db.Products.findOne({ where: { id } });
+    const GetUser = await db.Users.findOne({ where: { email: email } });
+    const GetOrder = await db.Orders.findOne({ where: { userId: GetUser.id, stateOrder: 'pendiente' } });
+    
+   
+        if (GetProduct){
+            if(!GetOrder){
+                const newOrder = await db.Orders.create({ userId: GetUser.id });
+                const operation = await db.Operations.create({
+                    productId: GetProduct.id,
+                    NameProduct: GetProduct.productName,
+                    ValueProduct: GetProduct.price,
+                    orderId: newOrder.id
                 });
-                await NewOrder.addProducts(agreeProduct, { through: { selfGranted: false } });
-                const resultIf = await db.Orders.findOne({
-                    where: {
-                        id: NewOrder.id
-                    },
-                    include:['products']
+
+                await newOrder.addOperations(operation, { through: { selfGranted: false } });
+
+                const result = await db.Orders.findOne({
+                    where:{ userId: GetUser.id },
+                    include:['operations']
                 });
-                res.status(200).json(resultIf);
+
+                res.status(200).json(result);
             }else{
-                await db.Orders.create({ userId: GetEmailUser.id });
-                const newProduct = await db.Products.findOne({
-                    where:{
-                        id: ProductOrder.id
-                    }
-                });
-                await NewOrder.addProducts(newProduct, { through: { selfGranted: false } });
-                const resultElse = await db.Orders.findOne({
+
+                const GetOperation = await db.Operations.findOne({ 
                     where: {
-                        id: NewOrder.id
-                    },
-                    include:['products']
+                        orderId: GetOrder.id,
+                        productId: GetProduct.id
+                    } 
                 });
-                res.status(200).json(resultElse);
+
+                if( GetOperation ){
+
+                    const { quantity } = await db.Operations.findOne({
+                        where:{
+                            orderId: GetOrder.id,
+                            productId: GetProduct.id
+                        }
+                    });
+                    await db.Operations.update({
+                        quantity: quantity+1
+                    },{
+                        where: { 
+                            orderId: GetOrder.id,
+                            productId: GetProduct.id 
+                        }
+                    });
+                    const result = await db.Orders.findOne({
+                        where:{ userId: GetUser.id },
+                        include:['operations']
+                    });
+                    res.status(200).json(result);
+
+                    //res.status(200).json('Hola if');
+                }
+                else{ 
+
+                    const Order = await db.Orders.findOne({ 
+                        where:{
+                            userId: GetUser.id,
+                            stateOrder: 'pendiente'
+                        } 
+                    });
+                    const operation = await db.Operations.create({
+                        productId: GetProduct.id,
+                        NameProduct: GetProduct.productName,
+                        ValueProduct: GetProduct.price,
+                        orderId: Order.id
+                    });
+
+                    await Order.addOperations(operation, { through: { selfGranted: false } });
+
+                    const Result = await db.Orders.findOne({
+                        where:{ 
+                            userId: GetUser.id,
+                            stateOrder: 'pendiente'
+                         },
+                        include:['operations']
+                    });
+
+                    const ConstOper = await db.Operations.findAll({
+                        where:{
+                            orderId: Result.id
+                        }
+                    });
+                    
+                    const ReduceResult = await ConstOper.reduce((a,b) => a+(b.ValueProduct * b.quantity), 0);
+    
+                    await db.Orders.update({
+                            totalCost: ReduceResult
+                        },{
+                            where: {
+                                id: Result.id
+                            }
+                    });  
+                    res.status(200).json(Result);
+                }
             }
         } else {
-            res.status(400).json('El id del producto no existe');
+            res.status(400).json('El id del producto ingresado no existe');
         }
-    } catch (error) {
-        res.status(500).json(error);
-    }
 };
 
-
-exports.update = async (req, res) => {
-    const { id } = req.params;
-    const { totalCost, quantityProducts, stateOrder } = req.body;
-    const updateOrder = await db.Orders.update({
-        totalCost,
-        quantityProducts,
-        stateOrder
-    },{
-        where: {
-            id
-        }
-    });
-};
-
-exports.destroy = async (req, res) => {
-    const { id } = req.params;
-    const deleteOrder = await db.Orders.destroy({
-        where: {
-            id: id
-        }
-    });
-};
 
