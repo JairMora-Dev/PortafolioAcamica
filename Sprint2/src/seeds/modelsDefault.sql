@@ -56,10 +56,10 @@ VALUES ( 'Bono o puntos DelilahResto' );
 ALTER TABLE addresses CHANGE COLUMN createdAt createdAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP;
 ALTER TABLE addresses CHANGE COLUMN updatedAt updatedAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP;
 
-INSERT INTO addresses ( place, userId )
+INSERT INTO addresses ( place, userId)
 VALUES ( 'Cll 14A #15-7', 1);
 
-INSERT INTO addresses ( place, userId )
+INSERT INTO addresses ( place, userId)
 VALUES ( 'CRA 23 #5B-12', 1);
 
 INSERT INTO addresses ( place, userId )

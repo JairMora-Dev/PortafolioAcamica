@@ -8,8 +8,8 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5000/orders/postOrder/3
-Authorization: bearer -user token-
+POST http://localhost:5000/orders/postOrder/2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxlbm55X211c2ljQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MzA0NDIyMDN9.IJOfI4R6ZGW6K3YwJfI-g_ZxPTCAV7Ypjd4O4S7ZfSU
 Content-Type: application/json
 
 {
@@ -29,13 +29,21 @@ Content-Type: application/json
 
 ###
 GET http://localhost:5000/orders/getOrderofUser
-Authorization: bearer -User token-
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxlbm55X211c2ljQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MzA0NDIyMDN9.IJOfI4R6ZGW6K3YwJfI-g_ZxPTCAV7Ypjd4O4S7ZfSU
 Content-Type: application/json
 
 {
    "email": "lenny_music@gmail.com"
 }
 
+###
+DELETE  http://localhost:5000/orders/removeProductsOrder/2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imxlbm55X211c2ljQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2MzA0NDIyMDN9.IJOfI4R6ZGW6K3YwJfI-g_ZxPTCAV7Ypjd4O4S7ZfSU
+Content-Type: application/json
+
+{
+   "email": "lenny_music@gmail.com"
+}
 
 
 

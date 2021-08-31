@@ -30,8 +30,10 @@ db.Orders.belongsTo(db.Users);
 db.Users.hasMany(db.Addresses);
 db.Addresses.belongsTo(db.Users);
 
+//BD_ORDERS
+db.Addresses.hasMany(db.Orders);
+db.Orders.belongsTo(db.Addresses);
 
-//BD_ORDERS VS BD_Products
 db.PayMethods.hasOne(db.Orders);
 db.Orders.belongsTo(db.PayMethods);
 

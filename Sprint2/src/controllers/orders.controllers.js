@@ -11,6 +11,25 @@ exports.getAll = async (req, res) => {
     }
 };
 
+//Obtener orden del usuario con id user
+exports.getOUserId = async (req, res) => {
+    const { email } = req.body;
+    const UserId = await db.Users.findOne({ where: {email} });
+    try {
+        const UsersOrder = await db.Orders.findAll({
+            where: { 
+                userId: UserId.id, 
+                stateOrder: 'pendiente' 
+            },
+            include:['operations']
+        });
+        res.status(200).json(UsersOrder);
+
+    } catch (error){
+        res.status(400).json(error);
+    }
+};
+
 //incorporar un producto a la orden
 exports.create = async (req, res) => {
     const { id } = req.params;
@@ -19,7 +38,7 @@ exports.create = async (req, res) => {
     const GetUser = await db.Users.findOne({ where: { email: email } });
     const GetOrder = await db.Orders.findOne({ where: { userId: GetUser.id, stateOrder: 'pendiente' } });
     
-   
+    try {
         if (GetProduct){
             if(!GetOrder){
 
@@ -143,25 +162,66 @@ exports.create = async (req, res) => {
         } else {
             res.status(400).json('El id del producto ingresado no existe');
         }
-};
 
-//Obtener orden del usuario con id user
-exports.getOUserId = async (req, res) => {
-    const { email } = req.body;
-    const UserId = await db.Users.findOne({ where: {email} });
-    try {
-        const UsersOrder = await db.Orders.findAll({
-            where: { 
-                userId: UserId.id, 
-                stateOrder: 'pendiente' 
-            },
-            include:['operations']
-        });
-        res.status(200).json(UsersOrder);
-
-    } catch (error){
-        res.status(400).json(error);
+    } catch (error) {
+        res.status(500).json(error);
     }
 };
+
+//eliminar un producto de la orden
+exports.DeleteOneProduct = async (req, res) => {
+    const { id } = req.params;
+    const { email } = req.body;
+
+    const GetProduct = await db.Products.findOne({ where: { id } });
+    const GetUser = await db.Users.findOne({ where: { email: email } });
+    const GetOrder = await db.Orders.findOne({ where: { userId: GetUser.id, stateOrder: 'pendiente' } });
+    
+    if(GetProduct){
+        if(!GetOrder){
+            res.status(400).json('Senior usuario, no tiene ordenes en estados pendietes')
+        }else{
+            const GetOperation = await db.Operations.findOne({
+                where:{
+                    orderId: GetOrder.id,
+                    productId: GetProduct.id
+                }
+            });
+
+            const Quanti = await db.Operations.findOne({ 
+                where: {
+                    orderId: GetOrder.id,
+                    quantity: GetOperation.quantity > 1
+                } 
+            });
+
+            if( GetOperation.quantity > 1 ){
+                // await db.Operations.update({
+                //     quantity:  Get2Products.quantity-1
+                // },{ 
+                //     where:{
+                //         orderId: GetOrder.id,
+                //         productId: GetProduct.id
+                //     }
+                // });
+                res.status(200).json('Al producto' + GetProduct.id +' se le ha eliminado una unidad de su cantidad')
+
+            }else{
+                // await db.Operations.destroy({ 
+                //     where: {
+                //         productId: GetProduct.id
+                //     }
+                // });
+                res.status(200).json('Producto ' + GetProduct.id + ' eliminado de la orden')
+            }
+        }
+    }else{
+        res.status(400).json('El id del producto a eliminar no existe');
+    }
+    
+
+}
+
+
 
 
