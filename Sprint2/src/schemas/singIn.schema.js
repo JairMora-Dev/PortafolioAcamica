@@ -12,7 +12,7 @@ const userValidation = joi.object({
             tlds: { allow: ['com', 'net', 'co'] },
         }),
     phone: joi.number()
-        .greater(7),
+        .greater(1000000),
     password: joi.string()
         .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
     repeat_password: joi.ref('password'),

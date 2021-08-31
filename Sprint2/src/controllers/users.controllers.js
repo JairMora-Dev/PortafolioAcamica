@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 const userValidation = require('../schemas/singIn.schema');
 const ValidationLogIn = require('../schemas/logIn.Schema');
-const { response } = require('express');
+
 
 const mySuperPassWord = process.env.DB_MYPASSWORD;
 

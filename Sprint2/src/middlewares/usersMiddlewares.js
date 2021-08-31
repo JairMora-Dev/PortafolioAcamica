@@ -33,15 +33,15 @@ exports.AdminToken = (async (req, res, next) =>{
 });
 
 exports.NoRepeatUsers = (async (req, res, next) =>{
-    email = await db.Users.email;
-    const NoRepeatEmail  = await db.Users.findOne({
-        where: { email: req.body.email }
+    const { email } = req.body;
+    const NoRepeatEmail = await db.Users.findOne({
+        where: { email }
     });
     
-    if( email == NoRepeatEmail ){
-        next();
-    }else{
+    if( NoRepeatEmail ){
         res.status(400).json('El Email suministrado ya esta registrado, porfavor ingrese otro');
+    }else{
+        next();
     }
 });
 

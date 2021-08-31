@@ -29,3 +29,14 @@ Content-Type: application/json
 {
     "isActive": true
 }
+
+###
+POST http://localhost:5000/users/register
+Content-Type: application/json
+
+{
+    "name": "test", 
+    "password": "test123", 
+    "email": "1test@gmail.com", 
+    "phone": 3145569
+}
