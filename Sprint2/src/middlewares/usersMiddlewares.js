@@ -1,6 +1,6 @@
 const db = require('../database/db');
 const expressJwt = require('express-jwt');
-const { Users } = require('../database/db');
+
 
 const mypass = process.env.DB_MYPASSWORD
 

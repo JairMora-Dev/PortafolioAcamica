@@ -1,11 +1,15 @@
 const db = require('../database/db');
+const redis = require('redis');
+
+const clientRedis = redis.createClient(6379);
 
 
 exports.getAll = async (req, res) => {
     try {
         const GetProducts = await db.Products.findAll({
         });
-        res.json(GetProducts);     
+        clientRedis.setex('products', 60 * 2, JSON.stringify(GetProducts));
+        res.json(GetProducts);
     } catch (error) {
         res.status(400).json(error);
     }
