@@ -188,31 +188,60 @@ exports.DeleteOneProduct = async (req, res) => {
                 }
             });
 
-            const Quanti = await db.Operations.findOne({ 
-                where: {
-                    orderId: GetOrder.id,
-                    quantity: GetOperation.quantity > 1
-                } 
-            });
+            if(GetOperation){
+                if( GetOperation.quantity > 1 ){
+                    await db.Operations.update({
+                        quantity: GetOperation.quantity-1
+                    },{ 
+                        where:{
+                            orderId: GetOrder.id,
+                            productId: GetProduct.id
+                        }
+                    });
 
-            if( GetOperation.quantity > 1 ){
-                // await db.Operations.update({
-                //     quantity:  Get2Products.quantity-1
-                // },{ 
-                //     where:{
-                //         orderId: GetOrder.id,
-                //         productId: GetProduct.id
-                //     }
-                // });
-                res.status(200).json('Al producto' + GetProduct.id +' se le ha eliminado una unidad de su cantidad')
+                    const ConstOper = await db.Operations.findAll({
+                        where:{
+                            orderId: GetOrder.id,
+                        }
+                    });
+                    
+                    const ReduceResult = await ConstOper.reduce((a,b) => a+(b.ValueProduct * b.quantity), 0);
+                    await db.Orders.update({
+                        totalCost: ReduceResult
+                    },{
+                        where: {
+                            id: GetOrder.id
+                        }
+                     });  
 
+                    res.status(200).json('Al producto' + GetProduct.id +' se le ha eliminado una unidad de su cantidad')
+    
+                }else{
+                    await db.Operations.destroy({ 
+                        where: {
+                            productId: GetProduct.id
+                        }
+                    });
+
+                    const ConstOper = await db.Operations.findAll({
+                        where:{
+                            orderId: GetOrder.id,
+                        }
+                    });
+                    
+                    const ReduceResult = await ConstOper.reduce((a,b) => a+(b.ValueProduct * b.quantity), 0);
+                    await db.Orders.update({
+                        totalCost: ReduceResult
+                    },{
+                        where: {
+                            id: GetOrder.id
+                        }
+                     }); 
+
+                    res.status(200).json('Producto ' + GetProduct.id + ' eliminado de la orden')
+                }
             }else{
-                // await db.Operations.destroy({ 
-                //     where: {
-                //         productId: GetProduct.id
-                //     }
-                // });
-                res.status(200).json('Producto ' + GetProduct.id + ' eliminado de la orden')
+                res.status(400).json('El id del producto en la orden no existe')
             }
         }
     }else{
