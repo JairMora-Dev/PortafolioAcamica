@@ -247,10 +247,7 @@ exports.DeleteOneProduct = async (req, res) => {
     }else{
         res.status(400).json('El id del producto a eliminar no existe');
     }
-    
-
-}
-
+};
 
 
 
