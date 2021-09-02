@@ -1,8 +1,10 @@
-const sequelize = require('./database/db');
 const express = require('express');
 const helmet = require('helmet');
 const db = require('./database/db')
 const app = express();
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerUI = require('swagger-ui-express');
+const swaggerOptions = require('./utils/swaggerConf');
 
 
 require('dotenv').config('../.env');
@@ -17,10 +19,12 @@ const adressRouter = require('./routes/adresses.routes');
 const productRouter = require('./routes/products.routes');
 const payMethodRouter = require('./routes/payMethods.routes');
 const orderRouter = require('./routes/orders.routes');
+const swaggerSpecs = swaggerJsDoc(swaggerOptions);
 
 
 
 
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 app.use('/users', userRouter);
 app.use('/adress', adressRouter);
 app.use('/products', productRouter);

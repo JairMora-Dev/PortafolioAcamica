@@ -57,26 +57,6 @@ exports.createLogIn = async (req, res) => {
     }
 };
 
-exports.destroy = async (req, res) => {
-    const { id } = req.params
-    const findId = await db.Users.findOne({
-        where: {
-            id
-        }
-    });
-
-    if( findId ){
-        const DeleteUser = await db.Users.destroy({
-            where: {
-                id: id
-            }
-        });
-        res.json('usuario eliminado')
-    }else{
-        res.status(404).json('Porfavor verifique el el id del usuario a eliminar existe en nuestra BD');
-    }
-};
-
 exports.ActiveSateupdate = async (req, res) => {
 
     const { id } = req.params;
