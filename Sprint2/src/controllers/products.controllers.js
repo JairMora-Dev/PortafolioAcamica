@@ -9,7 +9,7 @@ exports.getAll = async (req, res) => {
         const GetProducts = await db.Products.findAll({
         });
         clientRedis.setex('products', 60 * 2, JSON.stringify(GetProducts));
-        res.json(GetProducts);
+        res.status(200).json(GetProducts);
     } catch (error) {
         res.status(400).json(error);
     }
@@ -47,7 +47,7 @@ exports.update = async (req, res) => {
     
     try {
         if(  FindIDproduct ){
-            await db.Products.upsert({ productName, price }, {
+            await db.Products.update({ productName, price }, {
                 where: {
                     id
                 }

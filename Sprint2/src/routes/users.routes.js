@@ -12,12 +12,11 @@ userRouter.use('/updateUser', middlewareU.expJWT, middlewareU.invalidToken, midd
 userRouter.use('/register', middlewareU.NoRepeatUsers);
 
 
-
 /**
  * @swagger
  * /users/allUsers:
  *  get:
- *      summary: Obtener todos los usuarios resgitrados en tu sistema (Admin)
+ *      summary: ADMIN Obtener todos los usuarios resgitrados en tu sistema 
  *      tags: [Users]
  *      responses:
  *          200:
