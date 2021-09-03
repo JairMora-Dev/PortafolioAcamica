@@ -5,7 +5,7 @@ const payRoutes = express.Router();
 const PayMethod = require('../controllers/payMethods.controllers');
 const UMidd = require('../middlewares/usersMiddlewares');
 
-payRoutes.use('/', UMidd.expJWT, UMidd.invalidToken);
+payRoutes.use('/', UMidd.expJWT, UMidd.invalidToken, UMidd.UserStateActive);
 payRoutes.use('/getPayMeth', UMidd.expJWT, UMidd.invalidToken );
 payRoutes.use('/newPayMeth', UMidd.AdminToken, UMidd.EmailToken);
 payRoutes.use('/updatePayMeth', UMidd.AdminToken, UMidd.EmailToken);

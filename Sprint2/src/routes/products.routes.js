@@ -6,7 +6,7 @@ const Product = require('../controllers/products.controllers');
 const UMidd = require('../middlewares/usersMiddlewares');
 const Cache = require('../middlewares/cache');
 
-productRouter.use('/', UMidd.expJWT, UMidd.invalidToken, Cache.CacheProducts);
+productRouter.use('/', UMidd.expJWT, UMidd.invalidToken, UMidd.UserStateActive);
 productRouter.use('/getAllProducts', UMidd.expJWT, UMidd.invalidToken, Cache.CacheProducts);
 productRouter.use('/postProduct', UMidd.AdminToken, UMidd.EmailToken);
 productRouter.use('/updateProduct', UMidd.AdminToken, UMidd.EmailToken);

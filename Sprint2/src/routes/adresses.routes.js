@@ -5,7 +5,7 @@ const Adress = require('../controllers/adresses.controllers');
 const UMiddl = require('../middlewares/usersMiddlewares');
 
 
-adressRouter.use('/', UMiddl.expJWT, UMiddl.invalidToken);
+adressRouter.use('/', UMiddl.expJWT, UMiddl.invalidToken, UMiddl.UserStateActive);
 
 
 /**

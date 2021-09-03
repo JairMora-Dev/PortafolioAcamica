@@ -5,7 +5,7 @@ const Order = require('../controllers/orders.controllers');
 const OrderCon = require('../controllers/ordersComp.controllers');
 const UMid = require('../middlewares/usersMiddlewares');
 
-orderRouter.use('/', UMid.expJWT, UMid.invalidToken, UMid.EmailToken);
+orderRouter.use('/', UMid.expJWT, UMid.invalidToken, UMid.EmailToken, UMid.UserStateActive);
 orderRouter.use('/getAllorders', UMid.expJWT, UMid.invalidToken, UMid.EmailToken, UMid.AdminToken);
 
 

@@ -64,3 +64,19 @@ exports.EmailToken = (async (req, res, next) =>{
     }
 });
 
+
+exports.UserStateActive = (async (req, res, next) => {
+    const token = req.user.email
+    const StateUser = await db.Users.findOne({
+        where: {
+            isActive: false,
+            email: token
+        }
+    });
+
+    if(!StateUser){
+        next()
+    }else{
+        res.status(400).json('Usted por el momento esta inhabilitado');
+    }
+});

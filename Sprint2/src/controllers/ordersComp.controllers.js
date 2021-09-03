@@ -30,6 +30,7 @@ exports.Paymeth = async (req, res) =>{
     }
 };
 
+//select direcciones
 exports.Address = async (req, res) => {
     const { id } = req.params;
     const { email } =  req.body;
