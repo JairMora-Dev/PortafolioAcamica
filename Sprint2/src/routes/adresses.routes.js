@@ -10,9 +10,15 @@ adressRouter.use('/', UMiddl.expJWT, UMiddl.invalidToken);
 
 /**
  * @swagger
- * /adress/getAllAdress:
+ * /adress/getUserAdress/{id}:
  *  get:
- *      summary: Obtener todas las direcciones del sistema
+ *      parameters:
+ *          -  in: path
+ *             name: id
+ *             description: id del user para ver sus direcciones
+ *             required: true
+ *             type: integer
+ *      summary: Obtener las direcciones del user
  *      tags: [Address]
  *      responses:
  *          200:
@@ -20,7 +26,7 @@ adressRouter.use('/', UMiddl.expJWT, UMiddl.invalidToken);
  *          400:
  *              description: error catch                                                        
  */
-adressRouter.get('/getAllAdress/:id', Adress.getAll, UMiddl.AdminToken);
+adressRouter.get('/getUserAdress/:id', Adress.getAll, UMiddl.AdminToken);
 
 /**
  * @swagger
@@ -114,7 +120,7 @@ adressRouter.delete('/deleteAdress/:id', Adress.destroy, UMiddl.EmailToken);
  *          properties:
  *              email:
  *                  type: string
- *                  example: lenny_music@gmail.com@gmail.com
+ *                  example: lenny_music@gmail.com
  *                  description: email del usuario
  *                  $ref: '#/components/schemas/deleteAddr'
  */
@@ -139,7 +145,7 @@ adressRouter.delete('/deleteAdress/:id', Adress.destroy, UMiddl.EmailToken);
  *                  description: email de user
  *              price: 
  *                  type: string
- *                  example: CRA 175 #11C-24
+ *                  example: CRA 175 No11C-24
  *                  description: direccion del user
  *                  $ref: '#/components/schemas/postAddres'                 
  */
