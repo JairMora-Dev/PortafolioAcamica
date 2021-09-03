@@ -27,6 +27,7 @@ exports.create = async (req, res) => {
                 NamePay: req.body.NamePay
             } 
         });
+
         res.status(200).json(newPayMeth);
         
     } catch (error) {
@@ -44,12 +45,12 @@ exports.update = async (req, res) => {
     
     try {
         if( IdPayMeth ){
-            const updatePayMeth = await db.PayMethods.update({ NamePay },{
+         await db.PayMethods.update({ NamePay },{
                 where:{
                     id
                 }
             });
-            res.status(201).json(updatePayMeth);
+            res.status(200).json('Medio de pago' + IdPayMeth.id + 'actualizado');
         }else{
             res.status(400).json('El id del metodo de pago no existe, porfavor verifique su solicitud');
         }
