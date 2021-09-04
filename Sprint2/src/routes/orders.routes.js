@@ -16,9 +16,10 @@ orderRouter.post('/postOrder/:id', Order.create);
 orderRouter.delete('/removeProductsOrder/:id', Order.DeleteOneProduct);
 
 //Continue Order
+orderRouter.get('/GetUserOrder/:id', OrderCon.AdmingetUserOrder);
 orderRouter.put('/selectPayMeth/:id', OrderCon.Paymeth);
 orderRouter.put('/selectAddress/:id', OrderCon.Address);
-// orderRouter.put('/confirmOrder', OrderCon.confirmOrder);
+orderRouter.put('/confirmOrder/:id', OrderCon.ConfirmOrder);
 
 
 

@@ -1,5 +1,22 @@
 const db = require('../database/db');
 
+//Obtener orden confirmada de un usuario
+exports.AdmingetUserOrder = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const GetAllOrders = await db.Users.findOne({
+            include: ['orders', 'addresses'],
+            where:{
+                id
+            }
+        });
+        res.json(GetAllOrders);
+    } catch (error) {
+        res.status(400).json(error);
+    }
+};
+
+
 //Select paymethods
 exports.Paymeth = async (req, res) =>{
     const { id } = req.params;
@@ -57,3 +74,40 @@ exports.Address = async (req, res) => {
         res.status(400).json('El id de la direccion no existe en su lista');
     }
 };
+
+//para pasar la orden a estado confirmado
+exports.ConfirmOrder = async (req, res) => {
+    const { id } = req.params;
+    const { email } = req.body;
+
+    const GetUser = await db.Users.findOne({ where: { email } });
+    const GetOrder = await db.Orders.findOne({ where: { id, userId: GetUser.id, stateOrder: 'pendiente' } });
+
+    if (GetOrder) {
+        // console.log(GetOrder.addressId);
+        // console.log(GetOrder.payMethodId);
+
+        if ((GetOrder.addressId, GetOrder.payMethodId) == null){
+            res.status(400).json('Senior usuario porfavor antes de confirmar su orden proporcione una direccion y un metodo de pago')
+        } else {
+            const Confir = await db.Orders.update(
+                { 
+                    stateOrder: 'confirmada' 
+                },
+                { 
+                    where: {
+                        id: GetOrder.id,
+                        userId: GetUser.id,
+                        stateOrder: 'pendiente'
+                    }
+                }
+            );
+            res.status(200).json('Su orden a sido **confirmada** en breve se la prepararemos');
+        }
+    } else {
+        res.status(400).json('Senior usuario usted no tiene ordenes pendientes o el id de la Orden no existe en su lista');
+    }
+};
+
+
+
