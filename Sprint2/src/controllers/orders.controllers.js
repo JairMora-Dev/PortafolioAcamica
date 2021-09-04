@@ -13,8 +13,8 @@ exports.getAll = async (req, res) => {
 
 //Obtener orden del usuario con id user
 exports.getOUserId = async (req, res) => {
-    const { email } = req.body;
-    const UserId = await db.Users.findOne({ where: {email} });
+    const emailT  = req.user.email;
+    const UserId = await db.Users.findOne({ where: {email: emailT} });
     try {
         const UsersOrder = await db.Orders.findAll({
             where: { 
