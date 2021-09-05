@@ -34,6 +34,12 @@ orderRouter.get('/getAllorders', Order.getAll);
  * @swagger
  * /orders/GetUserOrder/{id}:
  *  get:
+ *      parameters:
+ *          -  in: path
+ *             name: id
+ *             description: id del usuario del historial de sus ordenes
+ *             required: true
+ *             type: integer
  *      summary: ADMIN Obtener todas las ordenes de un usuario del sistema
  *      tags: [Orders]
  *      responses:
@@ -216,7 +222,7 @@ orderRouter.put('/confirmOrder/:id', OrderCon.ConfirmOrder);
  *          content:
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/ordersAdmin'
+ *                      $ref: '#/components/schemas/ordersAdmin2'
  *      responses:
  *          200:
  *              description: El estado de la orden a sido actualizado
@@ -246,6 +252,32 @@ orderRouter.put('/changeStateO/:id', OrderCon.ChangeStateOr);
  *                  description: email del ADMIN para gestionar ordenes
  * 
  *                  $ref: '#/components/schemas/ordersAdmin'                 
+ */
+
+/**
+ * @swagger 
+ * tags: 
+ *  name : 'Orders'
+ *  description: 'CRUD para ordenes en Delilah Resto web'
+ * 
+ * components: 
+ *  schemas:
+ *      ordersAdmin2: 
+ *          type: object
+ *          required:
+ *               -email
+ *               -stateOrder
+ *          properties:
+ *              email:
+ *                  type: string
+ *                  example: delilah_resto@gmail.com
+ *                  description: email del ADMIN para gestionar ordenes
+ *              stateOrder: 
+ *                  type: string
+ *                  example: en preparacion
+ *                  description: estado de orden
+ * 
+ *                  $ref: '#/components/schemas/ordersAdmin2'                 
  */
 
 /**
