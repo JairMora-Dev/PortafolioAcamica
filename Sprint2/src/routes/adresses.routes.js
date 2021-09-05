@@ -32,7 +32,7 @@ adressRouter.get('/getUserAdress/:id', Adress.getAll, UMiddl.AdminToken);
  * @swagger
  * /adress/newAdress:
  *  post:
- *      summary: ADMIN Crea una nueva direccion en el sistema
+ *      summary: Crea una nueva direccion en tu perfil
  *      tags: [Address]
  *      requestBody:
  *          required: true
@@ -59,7 +59,7 @@ adressRouter.post('/newAdress', Adress.create, UMiddl.EmailToken);
  *             required: true
  *             type: integer
  * 
- *      summary: ADMIN accion para actualizar una direccion
+ *      summary: accion para actualizar una direccion de tu perfil
  *      tags: [Address]
  *      requestBody:
  *          required: true
@@ -87,7 +87,7 @@ adressRouter.put('/updateAdress/:id', Adress.update, UMiddl.EmailToken);
  *             required: true
  *             type: integer
  * 
- *      summary: ADMIN accion para eliminar una direccion 
+ *      summary: accion para eliminar una direccion de tu perfil
  *      tags: [Address]
  *      requestBody:
  *          required: true
@@ -143,7 +143,7 @@ adressRouter.delete('/deleteAdress/:id', Adress.destroy, UMiddl.EmailToken);
  *                  type: string
  *                  example: lenny_music@gmail.com
  *                  description: email de user
- *              price: 
+ *              place: 
  *                  type: string
  *                  example: CRA 175 No11C-24
  *                  description: direccion del user

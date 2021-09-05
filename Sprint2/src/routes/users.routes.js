@@ -156,11 +156,11 @@ userRouter.put('/updateUser/:id', User.ActiveSateupdate);
  *          properties:
  *              email:
  *                  type: string
- *                  example: leo_messi10@gmail.com
+ *                  example: lenny_music@gmail.com
  *                  description: email del usuario
  *              password: 
  *                  type: string
- *                  example: elMejor10
+ *                  example: elpapuNigga
  *                  description: contrasenia
  *                  $ref: '#/components/schemas/LogIn'
  */
