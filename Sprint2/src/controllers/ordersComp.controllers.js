@@ -1,4 +1,5 @@
 const db = require('../database/db');
+const { Op } = require("sequelize");
 
 //Obtener orden confirmada de un usuario
 exports.AdmingetUserOrder = async (req, res) => {
@@ -109,5 +110,34 @@ exports.ConfirmOrder = async (req, res) => {
     }
 };
 
+exports.ChangeStateOr = async (req, res) => {
+    const { id } = req.params;
+    const { stateOrder } = req.body;
+    const Opcion = 'confirmada';
+    const Opcion1 = 'en preparacion';
+    const Opcion2 = 'enviada';
+    const Opcion3 = 'entregada';
+    const GetOrderCon = await db.Orders.findOne({ where: { id, stateOrder: { [Op.ne]: 'pendiente' } }});
+    
 
+    if ( Opcion1 == stateOrder || Opcion2 == stateOrder || Opcion3 == stateOrder ) {
+        if( GetOrderCon ){
+            await db.Orders.update({
+                stateOrder
+            }, {
+                where: {
+                    id
+                }
+            });
+    
+            res.status(201).json('La orden con id: ' + id + ' a sido actualizada a estado de: ' + stateOrder );
+    
+        }else{
+            res.status(400).json('El id de la orden en estado ' + Opcion + ' no existe');
+        }
+    } else {
+        res.status(400).json('favor ingrese un estado de orden valido');
+        console.log(stateOrder);
+    }
+};
 

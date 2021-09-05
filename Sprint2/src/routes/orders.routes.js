@@ -14,19 +14,20 @@ orderRouter.use('/removeProductsOrder', UMid.EmailToken);
 orderRouter.use('/selectPayMeth', UMid.EmailToken);
 orderRouter.use('/selectAddress', UMid.EmailToken);
 orderRouter.use('/confirmOrder', UMid.EmailToken);
+orderRouter.use('/changeStateO', UMid.AdminToken, UMid.EmailToken);
 
 
-//Orders
 orderRouter.get('/getAllorders', Order.getAll);
 orderRouter.get('/getOrderofUser', Order.getOUserId);
 orderRouter.post('/postOrder/:id', Order.create);
 orderRouter.delete('/removeProductsOrder/:id', Order.DeleteOneProduct);
 
-//Continue Order
+
 orderRouter.get('/GetUserOrder/:id', OrderCon.AdmingetUserOrder);
 orderRouter.put('/selectPayMeth/:id', OrderCon.Paymeth);
 orderRouter.put('/selectAddress/:id', OrderCon.Address);
 orderRouter.put('/confirmOrder/:id', OrderCon.ConfirmOrder);
+orderRouter.put('/changeStateO/:id', OrderCon.ChangeStateOr);
 
 
 
