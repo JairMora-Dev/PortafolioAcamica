@@ -28,7 +28,7 @@ exports.create = async (req, res) => {
             price: req.body.price 
             } 
         });
-
+        clientRedis.del('products');
         res.status(200).json(`Producto ${productName} creado`);
     } catch (error) {
         res.status(400).json(error);
@@ -52,6 +52,7 @@ exports.update = async (req, res) => {
                     id
                 }
             });
+            clientRedis.del('products');
             res.json(`Producto con id ${id} actualizado`);
         }else{
             res.status(400).json('El id del producto a actualizar no existe, por favor verifique su solicitud');
@@ -76,6 +77,7 @@ exports.destroy = async (req, res) => {
                     id: id
                 }
             });
+            clientRedis.del('products');
             res.status(200).json('Producto eliminado exitosamente');
         }else{
             res.status(400).json('El id del producto a eliminar no existe porfavor, verifique su slicitud');
