@@ -7,7 +7,7 @@ const UMidd = require('../middlewares/usersMiddlewares');
 const Cache = require('../middlewares/cache');
 
 productRouter.use('/', UMidd.expJWT, UMidd.invalidToken, UMidd.UserStateActive);
-productRouter.use('/getAllProducts', UMidd.expJWT, UMidd.invalidToken, Cache.CacheProducts);
+productRouter.use('/getAllProducts', UMidd.expJWT, UMidd.invalidToken);
 productRouter.use('/postProduct', UMidd.AdminToken, UMidd.EmailToken);
 productRouter.use('/updateProduct', UMidd.AdminToken, UMidd.EmailToken);
 productRouter.use('/removeProduct', UMidd.AdminToken, UMidd.EmailToken);
@@ -24,7 +24,7 @@ productRouter.use('/removeProduct', UMidd.AdminToken, UMidd.EmailToken);
  *          400:
  *              description: error catch                                                        
  */
-productRouter.get('/getAllProducts', Product.getAll);
+productRouter.get('/getAllProducts', Product.getAll, Cache.CacheProducts);
 
 /**
  * @swagger
@@ -46,7 +46,7 @@ productRouter.get('/getAllProducts', Product.getAll);
  *          403:
  *              description: usted no cuenta con permisos ADMIN.
  */
-productRouter.post('/postProduct', Product.create);
+productRouter.post('/postProduct', Product.create, Cache.CacheProducts);
 
 /**
  * @swagger
@@ -74,7 +74,7 @@ productRouter.post('/postProduct', Product.create);
  *              description: El id del producto a actualizar no existe, por favor verifique su solicitud
  *      
  */
-productRouter.put('/updateProduct/:id', Product.update);
+productRouter.put('/updateProduct/:id', Product.update, Cache.CacheProducts);
 
 /**
  * @swagger
@@ -102,7 +102,7 @@ productRouter.put('/updateProduct/:id', Product.update);
  *              description: El id del producto a eliminar no existe, por favor verifique su solicitud
  *      
  */
-productRouter.delete('/removeProduct/:id', Product.destroy);
+productRouter.delete('/removeProduct/:id', Product.destroy, Cache.CacheProducts);
 
 
 

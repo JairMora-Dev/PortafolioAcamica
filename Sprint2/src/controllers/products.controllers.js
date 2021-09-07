@@ -77,8 +77,8 @@ exports.destroy = async (req, res) => {
                     id: id
                 }
             });
-            clientRedis.del('products');
             res.status(200).json('Producto eliminado exitosamente');
+            clientRedis.del('products');
         }else{
             res.status(400).json('El id del producto a eliminar no existe porfavor, verifique su slicitud');
         }
