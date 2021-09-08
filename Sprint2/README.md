@@ -38,7 +38,6 @@ Como usuario podrás:
 ```bash
 npm install
 ```
-El anterior comando instalara todos los recursos o dependencias que contiene este sprint 2.
 
 ## Uso
 1. Ejecuta el proyecto con el siguiente comando en la terminar. 
