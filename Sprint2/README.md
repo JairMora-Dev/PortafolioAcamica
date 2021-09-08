@@ -80,7 +80,7 @@ Esto generara automaticamente un llenado en la tablas de datos de products, addr
 **ALGO IMPORTANTE** es que concidero que los usuarios deben poder acceder a obtener los medios de pagos dispoibles en la API, por esta razon deje abierta esa validacion para usuarios registrados en Delilha Resto.
 
 
-## GitLab e Email del autor 
+## GitHub e Email del autor 
 [Alvaro Jair Agudelo Mora - portafolio BackEnd Acamica](https://github.com/jairMora007)
 
 jairmora07@gmail.com
