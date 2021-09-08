@@ -10,7 +10,7 @@ Como usuario podrás:
 
 1. Crear una cuenta y recibir un **token** para acceder a los productos y servicios que te ofrece Delilah Restó.
 
-2. Realizar pedidos (ver, agregar, modificar y eliminar productos de tu pedido), puedes tambien **seleccionar medios de pago**  y que lleguen esas ordenes a cualquiera de tu agenda personalizable de direcciones. También podrás tener un historial de todas las ordenes que ya fueron **confirmadas**.
+2. Realizar pedidos (ver, agregar, modificar y eliminar productos de tu pedido), puedes tambien **seleccionar medios de pago**  y que lleguen esas ordenes a cualquiera de tu agenda personalizable de direcciones.
 
 ## Recursos 
 
