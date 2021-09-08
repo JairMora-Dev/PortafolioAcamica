@@ -11,7 +11,7 @@ exports.AdmingetUserOrder = async (req, res) => {
                 id
             }
         });
-        res.json(GetAllOrders);
+        res.status(200).json(GetAllOrders);
     } catch (error) {
         res.status(400).json(error);
     }
@@ -85,8 +85,6 @@ exports.ConfirmOrder = async (req, res) => {
     const GetOrder = await db.Orders.findOne({ where: { id, userId: GetUser.id, stateOrder: 'pendiente' } });
 
     if (GetOrder) {
-        // console.log(GetOrder.addressId);
-        // console.log(GetOrder.payMethodId);
 
         if ((GetOrder.addressId, GetOrder.payMethodId) == null){
             res.status(400).json('Senior usuario porfavor antes de confirmar su orden proporcione una direccion y un metodo de pago')
@@ -137,7 +135,6 @@ exports.ChangeStateOr = async (req, res) => {
         }
     } else {
         res.status(400).json('favor ingrese un estado de orden valido');
-        console.log(stateOrder);
     }
 };
 

@@ -141,9 +141,9 @@ orderRouter.delete('/removeProductsOrder/:id', Order.DeleteOneProduct);
  *                      $ref: '#/components/schemas/postOrders'
  *      responses:
  *          200:
- *              description: El producto ha sido eliminado de la orden
+ *              description: El metodo de pago ha sido seleccionado 
  *          400:
- *              description: El id del producto a eliminar no existe, por favor verifique su solicitud
+ *              description: El id del metodo de pago no existe, por favor verifique su solicitud
  *      
  */
 orderRouter.put('/selectPayMeth/:id', OrderCon.Paymeth);
@@ -169,9 +169,9 @@ orderRouter.put('/selectPayMeth/:id', OrderCon.Paymeth);
  *                      $ref: '#/components/schemas/postOrders'
  *      responses:
  *          200:
- *              description: El producto ha sido eliminado de la orden
+ *              description: Se ha seleccionado una dir para la orden
  *          400:
- *              description: El id del producto a eliminar no existe, por favor verifique su solicitud
+ *              description: El id de la dir no existe, por favor verifique su solicitud
  *      
  */
 orderRouter.put('/selectAddress/:id', OrderCon.Address);
@@ -197,9 +197,9 @@ orderRouter.put('/selectAddress/:id', OrderCon.Address);
  *                      $ref: '#/components/schemas/postOrders'
  *      responses:
  *          200:
- *              description: El producto ha sido eliminado de la orden
+ *              description: Su orden ha sido confirmada
  *          400:
- *              description: El id del producto a eliminar no existe, por favor verifique su solicitud
+ *              description: El id de la orden pendiente no existe, por favor verifique su solicitud
  *      
  */
 orderRouter.put('/confirmOrder/:id', OrderCon.ConfirmOrder);

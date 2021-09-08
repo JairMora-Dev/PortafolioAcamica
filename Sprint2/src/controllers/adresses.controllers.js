@@ -2,9 +2,11 @@ const db = require('../database/db');
 
 exports.getAll = async (req, res) => {
     const { id } = req.params;
+    const token = req.user.email
     const UserInfo = await db.Users.findOne({
         where:{
-            id
+            id,
+            email: token
         }
     });
     try {
@@ -16,7 +18,7 @@ exports.getAll = async (req, res) => {
             });
             res.status(200).json(GetAdress);
         } else {
-            res.status(400).json('El id de usuario suministrado no existe')
+            res.status(400).json('Su token no coincide con la info que solicita, o el id de usuario suministrado no existe');
         }
     }catch (error) {
         res.status(401).json(error);

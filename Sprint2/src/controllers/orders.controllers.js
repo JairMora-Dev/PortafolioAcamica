@@ -38,7 +38,6 @@ exports.create = async (req, res) => {
     const GetUser = await db.Users.findOne({ where: { email: email } });
     const GetOrder = await db.Orders.findOne({ where: { userId: GetUser.id, stateOrder: 'pendiente' } });
     const GetCONorder = await db.Orders.findOne({ where: { userId: GetUser.id, stateOrder: !'pendiente' } });
-    console.log(GetCONorder);
     
     try {
         if (GetProduct){

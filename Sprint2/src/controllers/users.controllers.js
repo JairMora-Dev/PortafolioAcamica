@@ -48,7 +48,7 @@ exports.createLogIn = async (req, res) => {
                 email,
                 isAdmin 
             }, mySuperPassWord);
-            res.json( 'All in orden your income token is: ' + token );
+            res.json( 'token: ' + token );
         } else {
             res.status(404).json('Unathorized desde user.controllers');
         }
