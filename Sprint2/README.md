@@ -17,7 +17,6 @@ Como usuario podrás:
 - Node.js
 - Express.js
 - Swagger
-- Express Basic Auth
 - Helmet
 - Bcrypt
 - Dotenv
