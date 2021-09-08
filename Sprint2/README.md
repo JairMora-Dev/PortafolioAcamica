@@ -50,11 +50,17 @@ node src/index.js
 ``` 
 Al momento de ejecutar el comando, el codigo automaticamente generara las tablas (users, products, addresses, operations, orders y payMethods con sus respectivas ForeingKey) dentro de la base de datos, con dos usuarios por defecto en la tabla **users**, uno ADMIN y el otro user. 
 
-2. Una vez ejecutado exitosamente el proyecto, en la carpeta **src/seeds** existe un script formato SQL, el cual debe ser ejecutado desde la interfaz de terminal de MySQL usando el comando (para reconocer que usted estan en la interfaz de terminal de MySQL en la temrinal debe aparecer **mysql>** ): 
+2. Una vez ejecutado exitosamente el proyecto, en la carpeta **src/seeds** existe un script formato SQL, el cual debe ser ejecutado desde la interfaz de terminal de MySQL usando el comando 
 
 ```bash
 source /ruta comlpleta de la ubicacion del archivo SQL
 ```
+
+Para reconocer que usted estan en la interfaz de terminal de MySQL en la temrinal debe aparecer:
+```bash
+mysql> 
+```
+
 Esto generara automaticamente un llenado en la tablas de datos de products, addresses y payMethods.
 
 **NOTA:** El script solo debe ser ejecutado una vez, para no duplicar datos en la base de datos. Si no sabe como realizar la ejecucion de este formato de scripts con MySQL porfavor, dirijase al siguiente [tutorial](https://www.youtube.com/watch?v=SGSzBqz30Rs).  
