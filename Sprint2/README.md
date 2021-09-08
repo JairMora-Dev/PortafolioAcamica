@@ -33,7 +33,7 @@ Como usuario podrás:
 
 1. Crea una base de datos en tu MySQL con el nombre **DelilahS2_DB**
 
-2. Descarga el [repositorio](https://github.com/jairMora007/PortafolioAcamica/tree/main) en el anterior link e instala el package como se muestra a continuación, para tener todos los recursos para que funcione la API. El archivo **.env** es enviado en formato .zip junto con todo el proyecto para ser incorporado a los archivos. 
+2. Descarga el [repositorio](https://github.com/jairMora007/PortafolioAcamica/tree/main) en el anterior link e instala el package como se muestra a continuación, con el fin de tener los recursos necesarios para API. El archivo **.env** es enviado en formato .zip junto con todo el proyecto.  
 
 ```bash
 npm install
