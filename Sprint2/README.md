@@ -56,7 +56,7 @@ Al momento de ejecutar el comando, el codigo automaticamente generara las tablas
 source /ruta comlpleta de la ubicacion del archivo SQL
 ```
 
-Para reconocer que usted estan en la interfaz de terminal de MySQL en la temrinal debe aparecer:
+Para reconocer que usted esta en la interfaz de terminal de MySQL en la temrinal debe aparecer:
 ```bash
 mysql> 
 ```
