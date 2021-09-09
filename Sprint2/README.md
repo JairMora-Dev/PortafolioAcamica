@@ -76,7 +76,7 @@ Esto generara automaticamente un llenado en la tablas de datos de products, addr
 
 5. Con esto es suficiente para poder empezar a utilizar los diferentes EndPoints que aparecen en la API.
 
-**ALGO IMPORTANTE** es que concidero que los usuarios deben poder acceder a obtener los medios de pagos dispoibles en la API, por esta razon deje abierta esa validacion para usuarios registrados en Delilha Resto.
+**ALGO IMPORTANTE** es que concidero que los usuarios deben poder acceder a obtener los medios de pagos dispoibles en la API, por esta razon deje abierta esa validacion para usuarios registrados en Delilha Resto, ademas de esto el proyecto no tiene username de usuario, con el fin de que la validacion de datos ingresados sea **unica** para cada nuevo usuario, el projecto cuenta con un middleware que impide que existan **emails** duplicados y por tanto, usuarios con informacion duplicada. 
 
 
 ## GitHub e Email del autor 
