@@ -1,7 +1,7 @@
 const db = require('../database/db');
 const redis = require('redis');
 
-const clientRedis = redis.createClient(6379);
+const clientRedis = redis.createClient(process.env.REDIS_AWSPORT);
 
 
 exports.getAll = async (req, res) => {

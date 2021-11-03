@@ -1,6 +1,6 @@
 const redis = require('redis');
 
-const clientRedis = redis.createClient(6379);
+const clientRedis = redis.createClient(process.env.REDIS_AWSPORT);
 
 exports.CacheProducts = (req, res, next) => {
     clientRedis.get('products', (err, GetProducts) => {
