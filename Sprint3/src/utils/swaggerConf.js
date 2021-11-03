@@ -2,9 +2,9 @@ const swaggerOptions = {
     definition: {
         openapi: "3.0.0",
         info: {
-            title: "Sprint project 2 - Delilah Restó",
-            version: "2.0.0",
-            description: "Proyecto 2 para acamica DWBE Persiste",
+            title: "Sprint project 3 - Delilah Restó",
+            version: "3.0.0",
+            description: "Proyecto 3 para acamica DWBE My APP Live",
             contact : {
                 name : " Jair Agudelo Mora ",
                 email : "jairmora07@gmail.com"
