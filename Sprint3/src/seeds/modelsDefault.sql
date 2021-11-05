@@ -1,5 +1,5 @@
 -- MySQL defaults values to Sprint2
-USE DelilahS2_DB;
+USE DelilahS3_DB;
 
 ALTER TABLE products CHANGE COLUMN createdAt createdAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP;
 ALTER TABLE products CHANGE COLUMN updatedAt updatedAt datetime NOT NULL DEFAULT CURRENT_TIMESTAMP;
