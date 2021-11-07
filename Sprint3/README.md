@@ -49,7 +49,7 @@ npm install
 
 2. El proyecto cuenta con dos ecosistemas de ejecucion: **Modo desarrollador** y **Modo para producción**, teniendo en cuenta esto puede ejecutar, segun corresponda:   
 ```bash
-pm2 ecosystem.config.js --env local --watch
+pm2 ecosystem.config.js --env ´local´ --watch
 
 o
 
