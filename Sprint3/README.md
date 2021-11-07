@@ -1,6 +1,6 @@
 # SprintProject2 (Api restaurante Delilah Restó - persistente)
 
-Projecto tipo API para el cliente hipotético "Delilah Restó" en el cual como administrador de dicha API podrás:
+Proyecto tipo API para el cliente hipotético "Delilah Restó" en el cual como administrador de dicha API podrás:
 
 1. Agregar, actualizar y eliminar **productos** y **medios de pago**
 
