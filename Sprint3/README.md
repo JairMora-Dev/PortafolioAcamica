@@ -30,39 +30,33 @@ Como usuario podrás:
 
 ## Instalación 
 
-1. Descarga el [repositorio](https://github.com/JairMora-Dev/PortafolioAcamica/tree/main/Sprint3) en el anterior link e instala el contenido del package.json como se muestra a continuación, con el fin de tener los recursos necesarios para API. El archivo **.env** es enviado en formato junto con todo el proyecto.  
+1. Accede a la instancia EC2 de AWS con ayuda del archivo **UbuntuS3.pem** enviado junto con el proyecto. Ubicandose al mismo nivel de carpetas donde se encuentra el archivo antes mencionado, ejecuta:
+```bash
+ssh -i UbuntuS3.pem ubuntu@'Dirección IPv4 pública de la instancia en AWS'
+```
+
+2. De no contar con el proyecto descarga el [repositorio](https://github.com/JairMora-Dev/PortafolioAcamica/tree/main/Sprint3) en el anterior link e instala el contenido del package.json como se muestra en el siguiente comando, con el fin de tener los recursos necesarios para API. El archivo **.env** lo puede solicitar a mi [contacto](jair.agudelomora@gmail.com) por correo electronico.   
 
 ```bash
 npm install
 ```
 
 ## Uso
-1. Ejecuta el proyecto con el siguiente comando en la terminar. 
+1. Una vez dentro de la instancia, dirijase a la siguiente ruta dentro del sistema operativo 
 ```bash
-npm run dev
-``` 
-o si no posee nodemon puede ejecutar el proyecto con el comando:
-```bash
-node src/index.js
-``` 
-Al momento de ejecutar el comando, el codigo automaticamente generara las tablas (users, products, addresses, operations, orders y payMethods con sus respectivas ForeingKey) dentro de la base de datos, con dos usuarios por defecto en la tabla **users**, uno ADMIN y el otro user. 
-
-2. Una vez ejecutado exitosamente el proyecto, en la carpeta **src/seeds** existe un script formato SQL, el cual debe ser ejecutado desde la interfaz de terminal de MySQL usando el comando 
-
-```bash
-source /ruta comlpleta de la ubicacion del archivo SQL
+/home/ubuntu/Desktop/PortafolioAcamica/Sprint3
 ```
 
-Para reconocer que usted esta en la interfaz de terminal de MySQL en la temrinal debe aparecer:
+2. El proyecto cuenta con dos ecosistemas de ejecucion: **Modo desarrollador** y **Modo para producción**, teniendo en cuenta esto puede ejecutar, segun corresponda:   
 ```bash
-mysql> 
-```
+pm2 ecosystem.config.js --env local --watch
 
-Esto generara automaticamente un llenado en la tablas de datos de products, addresses y payMethods.
+o
 
-**NOTA:** El script solo debe ser ejecutado una vez, para no duplicar datos en la base de datos. Si no sabe como realizar la ejecucion de este formato de scripts con MySQL porfavor, dirijase al siguiente [tutorial](https://www.youtube.com/watch?v=SGSzBqz30Rs).  
+pm2 ecosystem.config.js --env production --watch
+```  
 
-3. Accede a la documentacion de este proyecto con ayuda de Swagger, usando el siguiente [link](http://localhost:5000/api-docs), recuerde verificar que el puerto este siendo escuchado, para esto se recomienda la ejecucion via **nodemon**.
+3. Accede a la documentacion de este proyecto con ayuda de Swagger, usando el siguiente [link](https://mydevpageapi.tk/api-docs/), recuerde verificar que el puerto este siendo escuchado, para esto se recomienda la ejecucion via **pm2**. Además la pagina cuanta con un certificado HTTPS y su dominio propio.
 
 4. En Swagger estan todos los parametros establecidos para ADMIN y el User por defecto. Mas sin embargo a continuacion se muestra los correos de acceso y claves para AMIN y USER defaults: 
 
@@ -78,6 +72,6 @@ Esto generara automaticamente un llenado en la tablas de datos de products, addr
 
 
 ## GitHub e Email del autor 
-[Alvaro Jair Agudelo Mora - portafolio BackEnd Acamica](https://github.com/jairMora007)
+[Alvaro Jair Agudelo Mora - portafolio BackEnd Acamica](https://github.com/JairMora-Dev)
 
 jairmora07@gmail.com
