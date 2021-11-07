@@ -30,9 +30,7 @@ Como usuario podrás:
 
 ## Instalación 
 
-1. Crea una base de datos en tu MySQL con el nombre **DelilahS2_DB**
-
-2. Descarga el [repositorio](https://github.com/jairMora007/PortafolioAcamica/tree/main/Sprint2) en el anterior link e instala el package como se muestra a continuación, con el fin de tener los recursos necesarios para API. El archivo **.env** es enviado en formato .zip junto con todo el proyecto.  
+1. Descarga el [repositorio](https://github.com/JairMora-Dev/PortafolioAcamica/tree/main/Sprint3) en el anterior link e instala el contenido del package.json como se muestra a continuación, con el fin de tener los recursos necesarios para API. El archivo **.env** es enviado en formato junto con todo el proyecto.  
 
 ```bash
 npm install
