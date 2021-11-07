@@ -35,7 +35,7 @@ Como usuario podrás:
 ssh -i UbuntuS3.pem ubuntu@'Dirección IPv4 pública de la instancia en AWS'
 ```
 
-2. De no contar con el proyecto descarga el [repositorio](https://github.com/JairMora-Dev/PortafolioAcamica/tree/main/Sprint3) en el anterior link e instala el contenido del package.json como se muestra en el siguiente comando, con el fin de tener los recursos necesarios para API. El archivo **.env** lo puede solicitar a mi [contacto](jair.agudelomora@gmail.com) por correo electronico.   
+2. De no contar con el proyecto descarga el [repositorio](https://github.com/JairMora-Dev/PortafolioAcamica/tree/main/Sprint3) en el anterior link e instala el contenido del package.json como se muestra en el siguiente comando, con el fin de tener los recursos necesarios para API. El archivo **.env** lo puede solicitar a mi contacto por correo electronico.   
 
 ```bash
 npm install
