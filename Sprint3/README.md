@@ -50,11 +50,18 @@ npm install
 2. El proyecto cuenta con dos ecosistemas de ejecucion: **Modo desarrollador** y **Modo para producción**, teniendo en cuenta esto puede ejecutar, segun corresponda:   
 ```bash
 pm2 ecosystem.config.js --env local --watch
-
+```
 o
 
+```bash
 pm2 ecosystem.config.js --env production --watch
-```  
+```
+
+3. La API tambien cuenta con un comando para realizar breves *test* para el registro de usuarios en los servicios de la misma, para ello ejecute:
+
+```bash
+npm run test 
+```
 
 3. Accede a la documentacion de este proyecto con ayuda de Swagger, usando el siguiente [link](https://mydevpageapi.tk/api-docs/), recuerde verificar que el puerto este siendo escuchado, para esto se recomienda la ejecucion via **pm2**. Además la pagina cuanta con un certificado HTTPS y su dominio propio.
 
