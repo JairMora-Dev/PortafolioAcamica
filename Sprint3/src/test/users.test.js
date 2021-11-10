@@ -5,6 +5,12 @@ const db = require('../database/db');
 //const userRouter = require('../routes/users.routes');
 const app = require('../index');
 
+//const environment = process.env.NODE_ENV;
+//const apiDescription = process.env.API_DESCRIPTION;
+
+console.log(`La aplicacion se esta ejecutando en el ambiente: '${environment}'`);
+console.log(`Descripcion: '${apiDescription}'`);
+
 chai.should();
 chai.use(chaiHttp);
 
