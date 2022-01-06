@@ -1,4 +1,4 @@
-# SprintProject2 (Api restaurante Delilah Restó - persistente)
+# SprintProject3 (Api restaurante Delilah Restó - persistente)
 
 Proyecto tipo API para el cliente hipotético "Delilah Restó" en el cual como administrador de dicha API podrás:
 
