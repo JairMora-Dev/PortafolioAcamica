@@ -36,23 +36,10 @@ Como usuario podrás:
 npm install
 ```
 
-## Uso
-1. Una vez dentro de la instancia, dirijase a la siguiente ruta dentro del sistema operativo 
-```bash
-/home/ubuntu/Desktop/PortafolioAcamica/Sprint3
-```
+## Utilidades
+1. El proyecto cuenta con dos ecosistemas de ejecucion: **Modo desarrollador** y **Modo para producción**, teniendo en cuenta esto puede ejecutar.
 
-2. El proyecto cuenta con dos ecosistemas de ejecucion: **Modo desarrollador** y **Modo para producción**, teniendo en cuenta esto puede ejecutar, segun corresponda:   
-```bash
-pm2 ecosystem.config.js --env local --watch
-```
-o
-
-```bash
-pm2 ecosystem.config.js --env production --watch
-```
-
-3. La API tambien cuenta con un comando para realizar breves *test* para el registro de usuarios en los servicios de la misma, para ello ejecute:
+2. La API tambien cuenta con un comando para realizar breves *test* para el registro de usuarios en los servicios de la misma, para ello ejecute:
 
 ```bash
 npm run test 
