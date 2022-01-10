@@ -30,12 +30,7 @@ Como usuario podrás:
 
 ## Instalación 
 
-1. Accede a la instancia EC2 de AWS con ayuda del archivo **UbuntuS3.pem** enviado junto con el proyecto. Ubicandose al mismo nivel de carpetas donde se encuentra el archivo antes mencionado, ejecuta:
-```bash
-ssh -i UbuntuS3.pem ubuntu@'Dirección IPv4 pública de la instancia en AWS'
-```
-
-2. De no contar con el proyecto descarga el [repositorio](https://github.com/JairMora-Dev/PortafolioAcamica/tree/main/Sprint3) en el anterior link e instala el contenido del package.json como se muestra en el siguiente comando, con el fin de tener los recursos necesarios para API. El archivo **.env** lo puede solicitar a mi contacto por correo electronico.   
+1. De no contar con el proyecto descarga el [repositorio](https://github.com/JairMora-Dev/PortafolioAcamica/tree/main/Sprint3) en el anterior link e instala el contenido del package.json como se muestra en el siguiente comando, con el fin de tener los recursos necesarios para API. El archivo **.env** lo puede encontrar dentro del repositorio, junto con la informacion necesaria para el usuario de solo lectura en AWS.
 
 ```bash
 npm install
